@@ -7,3 +7,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.full-width{
+  width: 100%;
+}
+table{
+  width: 100%;
+}
+.actions-section{
+  text-align: end;
+  margin-inline-start: 10px;
+}
+.back-text{
+  cursor: pointer;
+}
+.back-text:hover{
+  color:rgb(88, 88, 159)
+}
