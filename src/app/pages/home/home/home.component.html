@@ -1,1 +1,22 @@
-<p>home works!</p>
+<div class="row">
+  <div class="col"  *ngFor="let service of services">
+
+
+<mat-card >
+  <mat-card-header>
+    <mat-card-title>{{service.title}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="service.imgUrl" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{service.description}}
+    </p>
+  </mat-card-content>
+
+</mat-card>
+  </div>
+</div>
+
+
+
+
