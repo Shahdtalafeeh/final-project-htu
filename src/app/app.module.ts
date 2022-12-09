@@ -9,7 +9,8 @@ import { LayoutsModule } from './core/components/layouts/layouts.module';
 import{AuthModule} from './pages/auth/auth.module'
 import{AngularFireModule}from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
-import{AngularFireAuthModule}from '@angular/fire/compat/auth'
+import{AngularFireAuthModule}from '@angular/fire/compat/auth';
+import { UsersModule } from './pages/users/users.module'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import{AngularFireAuthModule}from '@angular/fire/compat/auth'
     AuthModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    UsersModule
 
 
 
