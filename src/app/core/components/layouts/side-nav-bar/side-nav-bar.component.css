@@ -1,5 +1,6 @@
 .sidenav-container{
   height: 100vh;
+  background-color: #fff;
 }
 mat-sidenav{
   width: 300px;
@@ -9,7 +10,6 @@ mat-sidenav{
 }
 .main{
   padding: 1rem;
-  background-color: #fff;
 
 }
 .child-items{
@@ -39,3 +39,4 @@ mat-toolbar{
 .text-color{
   color: black;
 }
+

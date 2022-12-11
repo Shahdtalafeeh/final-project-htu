@@ -10,10 +10,11 @@ export class NavService {
   constructor() { }
   getNavMenu(){
     return new NavMenuDto('NavMenu',[
-      new NavItemDto('Home','home','/home'),
-      new NavItemDto('Dashboard','dashboard','/dashboard'),
-      new NavItemDto('Startups','category','/startups'),
-      new NavItemDto('Users','group','/users'),
+      new NavItemDto('Home','home','/home',''),
+      new NavItemDto('Dashboard','dashboard','/dashboard','admin'),
+      new NavItemDto('Startups','category','/startups','admin'),
+      new NavItemDto('Startups','category','/startups','endUser'),
+
 
     ])
   }

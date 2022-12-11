@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn$ | async; else notAuth">
+
 <h2>Start Ups</h2>
 <div class="row">
   <div class="filter-col">
@@ -122,8 +122,4 @@
   aria-label="Select page of periodic elements"
 >
 </mat-paginator>
-</div>
 
-<ng-template #notAuth >
-<div routerLink="/admin"></div>
-</ng-template>

@@ -3,14 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  background-color: rgb(232, 225, 225);
   }
   .login-card{
     min-width: 300px;
     max-width: 900px;
     min-height: 300px;
     box-shadow: 5px 10px 12px 10px #8888;
-    background-color: rgb(74, 77, 78);
 
 
   }

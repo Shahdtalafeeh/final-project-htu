@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import {  CanLoad, Route, Router, UrlSegment } from '@angular/router';
-import { AuthService } from '../services/auth/auth.service';
+import { UsersService } from '../services/users/users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoAuthGuard implements  CanLoad {
-  constructor(private _authService: AuthService, private router: Router) {}
+  constructor(private _userService: UsersService, private router: Router) {}
 
   canLoad(
     route: Route,
     segments: UrlSegment[]):boolean  {
-      const isLoggedIn = this._authService.isloggedIn;
+      const isLoggedIn = this._userService.isloggedIn;
       if (isLoggedIn) {
-        this.router.navigateByUrl('/')
+        // this.router.navigateByUrl('/startups')
         return false;
       }
     return true;

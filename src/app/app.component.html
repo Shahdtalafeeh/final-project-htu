@@ -1,6 +1,7 @@
-<app-layout><router-outlet></router-outlet></app-layout>
-<!--
-<ng-template #notAuth >
-</ng-template> -->
+<app-layout *ngIf="isLoggedIn$ | async; else notAuth"></app-layout>
 
-<!-- *ngIf="isLoggedIn$ | async; else notAuth" -->
+<ng-template #notAuth >
+    <router-outlet></router-outlet>
+
+</ng-template>
+
