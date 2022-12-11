@@ -1,0 +1,19 @@
+.width{
+    min-width: 300px;
+  }
+  .filter-col{
+  flex: 3;
+  flex-basis: 150px;
+  }
+  .filter-action{
+    flex: 1;
+    flex-basis: 150px;
+    text-align: end;
+  }
+  .action-col > button{
+    margin-inline-start: 10px;
+
+  }
+  tr{
+    cursor: pointer;
+  }

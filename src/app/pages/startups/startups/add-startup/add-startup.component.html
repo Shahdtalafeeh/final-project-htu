@@ -1,0 +1,63 @@
+<div class="page-header">
+    <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" class="back-text">Back</button>
+
+    <h2>Add Startup</h2>
+
+  </div>
+  <form [formGroup]="formGroup">
+    <mat-form-field appearance="outline">
+      <mat-label>Startup Name</mat-label>
+      <input matInput formControlName="startupName" placeholder="startup Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>logo Image</mat-label>
+      <input matInput formControlName="logoImage"  placeholder="logo Image">
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>city</mat-label>
+      <input matInput formControlName="city" placeholder="city">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>sectors</mat-label>
+      <input matInput formControlName="sectors" placeholder="sectors">
+
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>founder Name</mat-label>
+      <input matInput formControlName="founderName" placeholder="founder Name">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>number Of Employees</mat-label>
+      <input matInput type="number" formControlName="numberOfEmployees" placeholder="number Of Employees">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>year Of Establishment</mat-label>
+      <input matInput type="number" formControlName="yearOfEstablishment" placeholder="year Of Establishment">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>website Url</mat-label>
+      <input matInput formControlName="websiteUrl" placeholder="website Url">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>email Address</mat-label>
+      <input matInput formControlName="emailAddress" placeholder="email Address">
+
+    </mat-form-field>
+
+  </form>
+  <div class="actions-section">
+    <button mat-flat-button color="primary" (click)="onAddClicked()"><mat-icon>add</mat-icon>Add</button>
+
+  </div>
