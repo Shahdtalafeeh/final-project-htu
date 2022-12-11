@@ -4,7 +4,7 @@
     <mat-list>
       <div *ngFor="let item of navServiceList.children">
         <div *ngIf="item.children.length === 0; else hasChildren">
-          <a [routerLink]="[item.route]" (click)="onItemClicked()">
+          <a [routerLink]="[item.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===item.roll ">
 
           <mat-list-item>
             <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
@@ -15,13 +15,13 @@
         </div>
 
         <ng-template #hasChildren>
-          <mat-list-item >
+          <mat-list-item *ngIf="userInfo && userInfo.roll ===item.roll ">
             <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
             <div mat-line class="item-text">{{ item.displayName }}</div>
           </mat-list-item>
-          <mat-list>
+          <mat-list >
             <div *ngFor="let childItem of item.children">
-              <a [routerLink]="[childItem.route]" (click)="onItemClicked()">
+              <a [routerLink]="[childItem.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===childItem.roll ">
 
               <mat-list-item class="child-items">
                 <mat-icon mat-list-icon>{{ childItem.icon }}</mat-icon>
@@ -34,10 +34,8 @@
       </div>
     </mat-list>
 
-      <button mat-button *ngIf="isLoggedIn$ | async; else notAuth" (click)="onLoggedoutClicked()"><mat-icon>logout</mat-icon>Logout</button>
-      <ng-template #notAuth >
+      <button mat-button (click)="onLoggedoutClicked()"><mat-icon>logout</mat-icon>Logout</button>
 
-      </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="mat-elevation-z8 change-color" >

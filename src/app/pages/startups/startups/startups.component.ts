@@ -40,7 +40,7 @@ constructor(
   private router: Router,
   injector: Injector,
   private _startupservice: StartupsService,
-  private _usersService: UsersService
+  private _usersService: UsersService,
 ) {
   super(injector);
 }
