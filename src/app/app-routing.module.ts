@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { NoAuthGuard } from './core/guards/no-auth.guard';
 
 const routes: Routes = [
   {
@@ -9,17 +8,12 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./pages/auth/auth.module').then((m) => m.AuthModule),
-    canLoad: [NoAuthGuard],
-  },
+
   {
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
-    canLoad: [AuthGuard],
+
   },
   {
     path: 'dashboard',
@@ -27,19 +21,19 @@ const routes: Routes = [
       import('./pages/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    canLoad: [AuthGuard],
+
   },
   {
-    path: 'products',
+    path: 'startups',
     loadChildren: () =>
-      import('./pages/products/products.module').then((m) => m.ProductsModule),
-    canLoad: [AuthGuard],
+      import('./pages/startups/startups.module').then((m) => m.StartupsModule),
+  },{
+    path:'users',
+    loadChildren: () =>
+      import('./pages/users/users.module').then((m) => m.UsersModule),
+
   },
-  {
-    path: '**',
-    redirectTo: 'auth',
-    pathMatch: 'full',
-  },
+
 ];
 
 @NgModule({

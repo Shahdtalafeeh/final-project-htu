@@ -33,14 +33,18 @@
         </ng-template>
       </div>
     </mat-list>
-    <button mat-button (click)="onLoggedoutClicked()" class="text-color"><mat-icon>logout</mat-icon>Logout</button>
+
+      <button mat-button *ngIf="isLoggedIn$ | async; else notAuth" (click)="onLoggedoutClicked()"><mat-icon>logout</mat-icon>Logout</button>
+      <ng-template #notAuth >
+
+      </ng-template>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="mat-elevation-z8 change-color" >
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon style="color: #f2dbe4;">menu</mat-icon>
       </button>
-      <span>My App</span>
+      <span>Institue</span>
     </mat-toolbar>
 
     <main>

@@ -12,7 +12,8 @@ export class NavService {
     return new NavMenuDto('NavMenu',[
       new NavItemDto('Home','home','/home'),
       new NavItemDto('Dashboard','dashboard','/dashboard'),
-      new NavItemDto('Products','category','/products/all-products'),
+      new NavItemDto('Startups','category','/startups'),
+      new NavItemDto('Users','group','/users'),
 
     ])
   }
