@@ -9,12 +9,13 @@ import { SideNavBarComponent } from './side-nav-bar/side-nav-bar.component';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { HeaderComponent } from './header/header.component';
 
 
 
 
 @NgModule({
-  declarations: [LayoutComponent,SideNavBarComponent],
+  declarations: [LayoutComponent,SideNavBarComponent, HeaderComponent],
   imports: [CommonModule,MatSidenavModule,MatToolbarModule,MatIconModule,MatListModule,RouterModule,MatButtonModule,MatTooltipModule
 ],exports:[LayoutComponent],
 providers: []

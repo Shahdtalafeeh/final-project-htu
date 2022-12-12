@@ -18,4 +18,12 @@ export class NavService {
 
     ])
   }
+  getToolBarMenu(){
+    return new NavMenuDto('ToolBarMenu',[
+      new NavItemDto('Home','home','/home',''),
+      new NavItemDto('Users','group','/users',''),
+
+
+    ])
+  }
 }

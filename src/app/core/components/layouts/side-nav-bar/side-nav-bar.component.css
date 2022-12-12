@@ -1,11 +1,9 @@
 .sidenav-container{
   height: 100vh;
-  background-color: #fff;
 }
 mat-sidenav{
   width: 300px;
-  background-color: #f2dbe4;
-  color: #fff;
+  background-color:var(--gray);
   padding: 1rem;
 }
 .main{
@@ -15,28 +13,20 @@ mat-sidenav{
 .child-items{
   margin-inline-start: 20px !important;
 }
-a{
-  text-decoration: none;
-}
-mat-icon{
-  color: #c2185b;
-  margin-inline-end: 10px;
 
-}
-.item-text{
-  color: #c2185b;
-}
-mat-toolbar{
-  color: #f2dbe4;
-}
+
 .content{
   padding: 0.8rem;
   min-height: 100%;
 }
-.change-color{
-  background-color: #c2185b;
-}
-.text-color{
-  color: black;
-}
 
+.flex{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.logout{
+margin-inline-end: 20px;
+color: var(--blue);
+
+}
