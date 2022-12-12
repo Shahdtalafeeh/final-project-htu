@@ -2,6 +2,14 @@
 *{
   box-sizing: border-box;
 }
+:root{
+    --white:#f0f0f0;
+    --blue: #6b9ac2;
+    --dark-blue: #0c012a;
+--gray: #3d4551;
+
+
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -30,3 +38,10 @@ table{
 .back-text:hover{
   color:rgb(88, 88, 159)
 }
+.text{
+    text-decoration: none;
+    color: var(--white);
+  }
+  .icon{
+    color: var(--blue);
+  }

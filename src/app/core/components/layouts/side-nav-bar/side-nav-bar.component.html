@@ -4,11 +4,11 @@
     <mat-list>
       <div *ngFor="let item of navServiceList.children">
         <div *ngIf="item.children.length === 0; else hasChildren">
-          <a [routerLink]="[item.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===item.roll ">
+          <a [routerLink]="[item.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===item.roll " class="text">
 
           <mat-list-item>
-            <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-            <div mat-line class="item-text">{{ item.displayName }}</div>
+            <mat-icon mat-list-icon class="icon">{{ item.icon }}</mat-icon>
+            <div mat-line class="text">{{ item.displayName }}</div>
 
           </mat-list-item>
         </a>
@@ -17,11 +17,11 @@
         <ng-template #hasChildren>
           <mat-list-item *ngIf="userInfo && userInfo.roll ===item.roll ">
             <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-            <div mat-line class="item-text">{{ item.displayName }}</div>
+            <div mat-line >{{ item.displayName }}</div>
           </mat-list-item>
           <mat-list >
             <div *ngFor="let childItem of item.children">
-              <a [routerLink]="[childItem.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===childItem.roll ">
+              <a [routerLink]="[childItem.route]" (click)="onItemClicked()" *ngIf="userInfo && userInfo.roll ===childItem.roll " class="text">
 
               <mat-list-item class="child-items">
                 <mat-icon mat-list-icon>{{ childItem.icon }}</mat-icon>
@@ -34,16 +34,17 @@
       </div>
     </mat-list>
 
-      <button mat-button (click)="onLoggedoutClicked()"><mat-icon>logout</mat-icon>Logout</button>
+      <button mat-button  (click)="onLoggedoutClicked()"><mat-icon class="logout">logout</mat-icon>Logout</button>
 
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="mat-elevation-z8 change-color" >
-      <button mat-icon-button (click)="snav.toggle()">
-        <mat-icon style="color: #f2dbe4;">menu</mat-icon>
-      </button>
-      <span>Institue</span>
-    </mat-toolbar>
+  <mat-sidenav-content style="position: relative;">
+
+   <!-- <mat-toolbar class="mat-elevation-z8 change-color" > -->
+      <div style="position: absolute;" >
+        <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon style="color: var(--dark-blue)">menu</mat-icon>
+        </button>
+      </div>
 
     <main>
       <div class="mat-elevation-z8 content">

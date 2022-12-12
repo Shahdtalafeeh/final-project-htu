@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
+  isLoggedIn$!: Observable<boolean>;
 
-  constructor() { }
+  constructor(private _usersService: UsersService,
+    ) { }
 
   ngOnInit(): void {
+    this.isLoggedIn$=this._usersService.isLoggedIn$;
+
   }
 
 }

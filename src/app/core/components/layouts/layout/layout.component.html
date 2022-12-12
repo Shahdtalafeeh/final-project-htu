@@ -1,1 +1,5 @@
-<app-side-nav-bar></app-side-nav-bar>
+<app-side-nav-bar *ngIf="isLoggedIn$ |async; else notAuth"></app-side-nav-bar>
+<ng-template #notAuth >
+    <app-header></app-header>
+
+</ng-template>

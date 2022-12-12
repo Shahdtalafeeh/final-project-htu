@@ -16,18 +16,18 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   sideNav!: MatSidenav;
 
   navServiceList: NavMenuDto = new NavMenuDto('', []);
+  ToolBarList: NavMenuDto= new NavMenuDto('',[])
   userInfo!: User;
   constructor(
     private breakpoint: BreakpointObserver,
     private _navService: NavService,
     private _usersService: UsersService,
   ) {}
-  isLoggedIn$!: Observable<boolean>;
-  isAdminLoggedIn$!: Observable<boolean>;
+
 
   ngOnInit(): void {
-    this.navServiceList = this._navService.getNavMenu();
-    this.isLoggedIn$ = this._usersService.isLoggedIn$;
+    this.navServiceList = this._navService.getNavMenu()
+    this.ToolBarList = this._navService.getToolBarMenu()
     this._usersService.userData$.subscribe((user) => {
       if (user.uId.length > 0) this.userInfo = user;
     });

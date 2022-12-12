@@ -40,7 +40,7 @@ export class UsersService {
       this.angularFireAuth
         .signInWithEmailAndPassword(email, password)
         .catch((error) => {
-          this.router.navigate(['/users/login']);
+          this.router.navigate(['/users']);
           window.alert(error.message);
         })
     );
