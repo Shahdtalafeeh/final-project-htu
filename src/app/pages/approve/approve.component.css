@@ -1,0 +1,26 @@
+.width{
+    min-width: 300px;
+
+  }
+  .filter-col{
+  flex: 3;
+  flex-basis: 150px;
+  color: #c2185b;
+  }
+  .filter-action{
+    flex: 1;
+    flex-basis: 150px;
+    text-align: end;
+  }
+  .action-col > button{
+    margin-inline-start: 10px;
+
+  }
+  tr{
+    cursor: pointer;
+  }
+h2{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}

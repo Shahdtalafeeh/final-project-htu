@@ -1,0 +1,24 @@
+.flex{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-inline-end: 15px;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+.toolbar{
+  position: sticky;
+  top: 0;
+  padding: 1.2rem 3rem;
+  z-index: 1;
+  border-bottom: 1px solid var(--white);
+
+  background-color: var(--gray)
+
+}
+
+.name{
+  color: var(--blue);
+  margin-inline-start: 20px;
+}

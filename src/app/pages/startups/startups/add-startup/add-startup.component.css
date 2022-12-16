@@ -7,4 +7,5 @@ form{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    margin-inline-start: 50px;
   }

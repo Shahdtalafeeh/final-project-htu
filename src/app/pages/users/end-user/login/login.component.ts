@@ -8,14 +8,15 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements  OnInit {
 
   formGroup!: FormGroup;
 
   constructor(
     private router: Router,
     private _usersService: UsersService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.validatorFormGroup();
     }else{
       this._usersService.login(this.email.value, this.password.value);
-      this.router.navigate(['/home'])
+      // this.router.navigate(['/home'])
     }
 
   }

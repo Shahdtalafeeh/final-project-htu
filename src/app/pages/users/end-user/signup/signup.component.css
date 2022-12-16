@@ -3,12 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #e8e8e8;
   }
   .login-card{
     min-width: 300px;
     max-width: 900px;
     min-height: 300px;
     box-shadow: 5px 10px 12px 10px #8888;
+    background-color: var(--white);
 
 
   }
@@ -34,3 +36,11 @@
   .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+.space{
+  display: flex;
+  flex-direction: row;
+justify-content: space-between;
+}
+.button{
+  margin: 15px 20px;
+}

@@ -1,6 +1,8 @@
 export interface Service{
-  title:string,
-  imgUrl:string,
-  description:string,
+  sectors:string,
+  startupName:string,
+    logoImage:string
+
+
 
 }

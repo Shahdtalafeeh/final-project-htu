@@ -13,6 +13,8 @@ export class AuthGuard implements CanLoad {
     if (isLoggedIn) {
       return true;
     }
+    // this.router.navigate(['/home']);
+
     return false;
   }
 }

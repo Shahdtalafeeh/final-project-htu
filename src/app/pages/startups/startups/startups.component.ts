@@ -36,6 +36,7 @@ displayedColumns: string[] = [
 ];
 dataSource = new MatTableDataSource<Startups>([]);
 selection = new SelectionModel<any>(true, []);
+value:any
 constructor(
   private router: Router,
   injector: Injector,
@@ -48,14 +49,19 @@ constructor(
 ngOnInit(): void {
   this.getAllstart();
   this.isLoggedIn$=this._usersService.isLoggedIn$;
+  this.dataSource.filterPredicate = function (record,filter) {
+    return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
+  }
 }
 getAllstart() {
   this._startupservice.getAll().subscribe((result) => {
+    console.log(result)
     this.dataSource = new MatTableDataSource(result);
     this.dataSource.paginator = this.paginator;
     this.dataSource._updateChangeSubscription();
   });
 }
+
 onDeleteRowClicked(id:string){
   this._startupservice.delete(id)
 
@@ -99,4 +105,5 @@ applyFilter(event: Event) {
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
 }
+
 }

@@ -6,17 +6,16 @@ mat-sidenav{
   background-color:var(--gray);
   padding: 1rem;
 }
-.main{
+/* .main{
   padding: 1rem;
 
-}
+} */
 .child-items{
   margin-inline-start: 20px !important;
 }
 
 
 .content{
-  padding: 0.8rem;
   min-height: 100%;
 }
 
