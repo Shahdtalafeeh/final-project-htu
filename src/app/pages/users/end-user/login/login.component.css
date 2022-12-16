@@ -10,7 +10,8 @@
     max-width: 900px;
     min-height: 300px;
     box-shadow: 5px 10px 12px 10px #8888;
-background-color: #fff;
+    background-color: var(--white);
+
 
   }
   form{

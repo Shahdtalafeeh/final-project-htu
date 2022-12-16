@@ -37,10 +37,10 @@
       <button mat-button  (click)="onLoggedoutClicked()"><mat-icon class="logout">logout</mat-icon>Logout</button>
 
   </mat-sidenav>
-  <mat-sidenav-content style="position: relative;">
+  <mat-sidenav-content >
 
    <!-- <mat-toolbar class="mat-elevation-z8 change-color" > -->
-      <div style="position: absolute;" >
+      <div  style="position: fixed;  z-index: 2;">
         <button mat-icon-button (click)="snav.toggle()">
           <mat-icon style="color: var(--dark-blue)">menu</mat-icon>
         </button>

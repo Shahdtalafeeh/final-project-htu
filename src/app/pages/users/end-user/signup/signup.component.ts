@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
@@ -14,13 +15,16 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent extends AppComponentBase implements OnInit {
   formGroup!: FormGroup;
   constructor(
     private router: Router,
     private _usersService: UsersService,
-    private formbuilder: FormBuilder
-  ) {}
+    private formbuilder: FormBuilder,
+    injector: Injector
+  ) {
+    super(injector);
+  }
 
   ngOnInit(): void {
     this.formGroup = this.formbuilder.group({
@@ -39,6 +43,7 @@ export class SignupComponent implements OnInit {
       ],
     });
   }
+
   onsignupClicked() {
     if (this.formGroup.invalid) {
       this.validatorFormGroup();

@@ -1,4 +1,38 @@
 
 .col{
  width:300px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ background-color: var(--blue);
+ min-height: 350px;
+ cursor: pointer;
+
+}
+
+.img{
+  width: 200px;
+  height: 200px;
+}
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height:100vh ;
+
+  background-image: url(https://st2.depositphotos.com/1000423/10227/i/450/depositphotos_102278354-stock-photo-abstract-technology-background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  gap: 10px;
+}
+
+h2{
+  margin-top: 30px;
+  color: var(--blue);
+  font-size: 1.7rem;
+  font-weight: 600;
 }

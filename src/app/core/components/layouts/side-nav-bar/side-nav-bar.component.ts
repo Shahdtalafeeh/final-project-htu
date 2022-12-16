@@ -14,7 +14,6 @@ import { User } from 'src/app/core/interfaces/user.interface';
 export class SideNavBarComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav)
   sideNav!: MatSidenav;
-
   navServiceList: NavMenuDto = new NavMenuDto('', []);
   ToolBarList: NavMenuDto= new NavMenuDto('',[])
   userInfo!: User;
@@ -55,5 +54,6 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   onLoggedoutClicked() {
     this._usersService.logout();
   }
+
 
 }

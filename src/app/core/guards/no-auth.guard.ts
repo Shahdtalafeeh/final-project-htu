@@ -13,9 +13,11 @@ export class NoAuthGuard implements  CanLoad {
     segments: UrlSegment[]):boolean  {
       const isLoggedIn = this._userService.isloggedIn;
       if (isLoggedIn) {
-        // this.router.navigateByUrl('/startups')
+        // this.router.navigateByUrl('/')
+
         return false;
       }
     return true;
+
   }
 }

@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './pages/home/header/header.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
+import { ApproveComponent } from './pages/approve/approve.component';
+import { FormComponent } from './pages/form/form.component';
+import { PreviewStartupComponent } from './pages/preview-startup/preview-startup.component';
 
 const routes: Routes = [
   {
@@ -9,6 +13,7 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+
 
   {
     path: 'home',
@@ -18,6 +23,7 @@ const routes: Routes = [
       canLoad: [NoAuthGuard],
 
   },
+
   // {
   //   path: 'dashboard',
   //   loadChildren: () =>
@@ -38,6 +44,34 @@ const routes: Routes = [
       import('./pages/users/users.module').then((m) => m.UsersModule),
     canLoad: [NoAuthGuard],
   },
+  {
+    path:'form',
+    component:FormComponent,
+    canLoad: [AuthGuard],
+
+
+  },
+  {
+    path:'approve',
+    component:ApproveComponent,
+    canLoad: [AuthGuard],
+
+  },
+  {
+    path:'header',
+    component: HeaderComponent,
+    canLoad: [NoAuthGuard],
+  },
+  {
+path:'preview-startup',
+component:PreviewStartupComponent,
+canLoad:[NoAuthGuard]
+  },
+  {
+    path:'**',
+    redirectTo:'home',
+    pathMatch:'full'
+  }
 ];
 
 @NgModule({

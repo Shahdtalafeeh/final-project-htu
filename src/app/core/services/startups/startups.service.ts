@@ -25,6 +25,8 @@ export class StartupsService {
         )
       );
   }
+
+
   getById(id: string) {
     return this.angularFireDatabase.object('/startups/' + id).valueChanges();
   }

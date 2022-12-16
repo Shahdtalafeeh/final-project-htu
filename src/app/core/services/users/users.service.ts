@@ -32,7 +32,7 @@ export class UsersService {
     private angularFireAuth: AngularFireAuth,
     private angularFireDatabase: AngularFireDatabase
   ) {
-    this.authStateSubscribe();
+   this.authStateSubscribe();
     this.userRef = angularFireDatabase.list(this.dbPath);
   }
   login(email: string, password: string): Observable<any> {
@@ -59,7 +59,7 @@ export class UsersService {
       // } else {
       //   localStorage.removeItem('token');
       //   this.isLoggedIn$.next(false);
-      //   this.router.navigate(['/users']);
+      //   this.router.navigate(['/home']);
       // }
     });
   }
@@ -103,7 +103,7 @@ export class UsersService {
   logout() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['/home']);
+       this.router.navigate(['/home']);
       this.isLoggedIn$.next(false);
     });
   }

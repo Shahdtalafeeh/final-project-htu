@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Service } from 'src/app/core/interfaces/service.interface';
+import { StartupsService } from 'src/app/core/services/startups/startups.service';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +11,36 @@ import { Service } from 'src/app/core/interfaces/service.interface';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-services:Service[]=[
-  {title:'Autocomplete',
-  imgUrl:'https://v12.material.angular.io/assets/screenshots/autocomplete.scene.png',
-  description:'Suggests relevant options as the user types.',
-  },
-  {title:'Badge',
-  imgUrl:'https://v12.material.angular.io/assets/screenshots/badge.scene.png',
-  description:'A small value indicator that can be overlaid on another object.',
-  },
-  {title:'Button',
-  imgUrl:'https://v12.material.angular.io/assets/screenshots/button.scene.png',
-  description:'An interactive button with a range of presentation options.',
-  },
-]
-  constructor() { }
+  isLoggedIn$!: Observable<boolean>;
+  centered = false;
+
+services:Service[]=[]
+  constructor(private _userService: UsersService,  private _startupservice: StartupsService,
+    private route: Router) {
+
+    }
 
   ngOnInit(): void {
+this.getAllstart()
+
   }
+  routingToLogin(){
+    if(this._userService.isloggedIn){
+    this.route.navigate(['/form'])
+
+  }else{
+    this.route.navigate(['/users'])
+  }
+}
+getAllstart() {
+  this._startupservice.getAll().subscribe((result) => {
+    this.services = result;
+
+  });
+}
+onCardClicked() {
+  this.route.navigate(['/preview-startup']);
+}
+
 
 }

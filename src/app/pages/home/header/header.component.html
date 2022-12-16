@@ -1,0 +1,17 @@
+
+  <mat-toolbar class="toolbar">
+    <span class="name">MoDEE</span>
+    <span class="spacer"></span>
+    <div class="flex">
+        <div *ngFor="let item of ToolBarList.children" >
+          <a [routerLink]="[item.route]" class="text" >
+            <mat-list-item>
+            <div mat-line>{{ item.displayName }}</div>
+            </mat-list-item>
+          </a>
+        </div>
+      </div>
+    <button mat-icon-button>
+      <mat-icon class="icon">share</mat-icon>
+    </button>
+  </mat-toolbar>
