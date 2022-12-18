@@ -29,7 +29,7 @@ export class FormComponent extends AppComponentBase implements OnInit {
     })
   }
   onSubmitClicked(){
-    this._formService.setFormData({
+    this._formService.create({
       startupName: this.formGroup.controls['startupName'].value,
       logoImage: this.formGroup.controls['logoImage'].value,
       city:this.formGroup.controls['city'].value,
@@ -40,6 +40,8 @@ export class FormComponent extends AppComponentBase implements OnInit {
       websiteUrl: this.formGroup.controls['websiteUrl'].value,
       emailAddress: this.formGroup.controls['emailAddress'].value,
 
+    }).then(()=>{
+      this.back()
     })
 
 

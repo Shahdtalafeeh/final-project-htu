@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PreviewStartupComponent } from './preview-startup.component';
+import { PreviewComponent } from './preview.component';
 
-describe('PreviewStartupComponent', () => {
-  let component: PreviewStartupComponent;
-  let fixture: ComponentFixture<PreviewStartupComponent>;
+describe('PreviewComponent', () => {
+  let component: PreviewComponent;
+  let fixture: ComponentFixture<PreviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PreviewStartupComponent ]
+      declarations: [ PreviewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PreviewStartupComponent);
+    fixture = TestBed.createComponent(PreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
