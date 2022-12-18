@@ -42,4 +42,6 @@ export class StartupsService {
   deleteAll() {
     return this.startupsRef.remove();
   }
+
+
 }

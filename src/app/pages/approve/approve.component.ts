@@ -19,19 +19,21 @@ export class ApproveComponent extends AppComponentBase
 implements OnInit, AfterViewInit
 {
   isLoggedIn$!: Observable<boolean>;
+id:string=''
 
 @ViewChild(MatPaginator)
 paginator!: MatPaginator;
 displayedColumns: string[] = [
+  'approve',
   'select',
   'startupName',
-  'logoImage',
+  // 'logoImage',
   'city',
   'sectors',
   'founderName',
-  'numberOfEmployees',
-  'yearOfEstablishment',
-  'websiteUrl',
+  // 'numberOfEmployees',
+  // 'yearOfEstablishment',
+  // 'websiteUrl',
   'emailAddress',
   'action'
 ];
@@ -54,9 +56,9 @@ ngOnInit(): void {
 
 }
 getNewData(){
-  this._formService.getFormData().subscribe((result:any)=>{
+  this._formService.getAll().subscribe((result:any)=>{
     console.log(result)
-    this.dataSource=new MatTableDataSource(result);
+    this.dataSource=new MatTableDataSource(Object.values(result));
     this.dataSource._updateChangeSubscription();
   })
 
@@ -96,6 +98,11 @@ applyFilter(event: Event) {
 }
 ngAfterViewInit() {
   // this.dataSource.paginator = this.paginator;
+}
+
+approveIt(row:Startups , id:string){
+  this._startupservice.create(row)
+
 }
 
 }

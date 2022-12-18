@@ -10,8 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { LoginComponent } from './end-user/login/login.component';
-import { SignupComponent } from './end-user/signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const MatImports=[MatFormFieldModule,MatInputModule,FormsModule, ReactiveFormsModule,MatButtonModule,MatRadioModule]
 

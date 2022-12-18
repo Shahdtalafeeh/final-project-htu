@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Service } from 'src/app/core/interfaces/service.interface';
+import { PreviewService } from 'src/app/core/services/preview/preview.service';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 
 services:Service[]=[]
   constructor(private _userService: UsersService,  private _startupservice: StartupsService,
-    private route: Router) {
+    private route: Router,private _preview: PreviewService) {
 
     }
 
@@ -38,8 +39,13 @@ getAllstart() {
 
   });
 }
-onCardClicked() {
-  this.route.navigate(['/preview-startup']);
+onCardClicked(id:string) {
+
+  this.route.navigate(['/preview'],{
+    queryParams:{
+      id:id,
+    }
+    })
 }
 
 

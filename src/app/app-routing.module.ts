@@ -5,7 +5,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { ApproveComponent } from './pages/approve/approve.component';
 import { FormComponent } from './pages/form/form.component';
-import { PreviewStartupComponent } from './pages/preview-startup/preview-startup.component';
+import { PreviewComponent } from './pages/preview/preview.component';
 
 const routes: Routes = [
   {
@@ -63,8 +63,8 @@ const routes: Routes = [
     canLoad: [NoAuthGuard],
   },
   {
-path:'preview-startup',
-component:PreviewStartupComponent,
+path:'preview',
+component:PreviewComponent,
 canLoad:[NoAuthGuard]
   },
   {

@@ -2,16 +2,10 @@
 <div class="flex-col">
   <h2>Start Ups...</h2>
   <div class="row">
-
     <div class="col" *ngFor="let service of services">
-      <mat-card
-        class="col"
-        (click)="onCardClicked()"
-        matRipple
-        [matRippleCentered]="centered"
-      >
+      <mat-card class="col" (click)="onCardClicked(service.id)" matRipple>
         <mat-card-header>
-          <mat-card-title>{{ service.startupName}}</mat-card-title>
+          <mat-card-title>{{ service.startupName }}</mat-card-title>
         </mat-card-header>
         <img
           mat-card-image
@@ -19,11 +13,7 @@
           alt="Photo of a Shiba Inu"
           class="img"
         />
-        <!-- <mat-card-content>
-          <p>
-            {{ service.sectors.startupName }}
-          </p>
-        </mat-card-content> -->
+
       </mat-card>
     </div>
   </div>
@@ -33,3 +23,11 @@
   </button>
 </div>
 
+ <!-- <share-buttons
+  [theme]="'material-light'"
+  [include]="['facebook', 'twitter', 'instagram']"
+  [show]="9"
+  [size]="1"
+  [url]="''"
+  [autoSetMeta]="false"
+></share-buttons> -->

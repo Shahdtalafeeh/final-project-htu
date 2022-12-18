@@ -23,10 +23,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { ApproveComponent } from './pages/approve/approve.component';
 import { SplitTextModule } from './core/pipes/split-text/split-text.module';
-import { PreviewStartupComponent } from './pages/preview-startup/preview-startup.component';
+import { PreviewComponent } from './pages/preview/preview.component';
 import {MatRippleModule} from '@angular/material/core';
 import { FilterModule } from './core/pipes/filter/filter.module';
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+// import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+// import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 const MatImports = [
   MatTableModule,
@@ -41,11 +44,17 @@ const MatImports = [
   MatButtonModule,
   SplitTextModule,
   MatRippleModule,
-  FilterModule
+  FilterModule,
+  MatGridListModule,
+  MatCardModule,
+  // ShareButtonsModule.withConfig({
+  //   debug:true
+  // }),
+  // ShareIconsModule
 
 ];
 @NgModule({
-  declarations: [AppComponent, FormComponent, ApproveComponent, PreviewStartupComponent
+  declarations: [AppComponent, FormComponent, ApproveComponent, PreviewComponent
   ],
   imports: [
     BrowserModule,
