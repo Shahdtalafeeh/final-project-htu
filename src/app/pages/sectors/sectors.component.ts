@@ -5,68 +5,71 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
+import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
 import { Startups } from 'src/app/core/interfaces/startups.interface';
-import { FormService } from 'src/app/core/services/form/form.service';
-import { StartupsService } from 'src/app/core/services/startups/startups.service';
+import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-approve',
-  templateUrl: './approve.component.html',
-  styleUrls: ['./approve.component.css']
+  selector: 'app-sectors',
+  templateUrl: './sectors.component.html',
+  styleUrls: ['./sectors.component.css']
 })
-export class ApproveComponent extends AppComponentBase
+export class SectorsComponent extends AppComponentBase
 implements OnInit, AfterViewInit
 {
-  isLoggedIn$!: Observable<boolean>;
-
+isLoggedIn$!: Observable<boolean>;
 @ViewChild(MatPaginator)
 paginator!: MatPaginator;
 displayedColumns: string[] = [
-  'approve',
   'select',
-  'startupName',
-  // 'logoImage',
-  'city',
-  'sectors',
-  'founderName',
-  // 'numberOfEmployees',
-  // 'yearOfEstablishment',
-  // 'websiteUrl',
-  'emailAddress',
-  'action'
+  'sectorName',
+  'sectorLogo',
+  'designColor',
+  'parentCategoryName',
+  'action',
 ];
-dataSource = new MatTableDataSource<Startups>([]);
+dataSource = new MatTableDataSource<Sectors>([]);
 selection = new SelectionModel<any>(true, []);
+value: any;
+
+filterData = {
+  sectorName:''
+};
 constructor(
   private router: Router,
   injector: Injector,
-  private _startupservice: StartupsService,
-  private _usersService: UsersService,
-  private _formService: FormService
+  private _sectorservice: SectorsService,
+  private _usersService: UsersService
 ) {
   super(injector);
 }
 
 ngOnInit(): void {
-  this.getNewData()
+  this.getAllstart();
+  this.isLoggedIn$ = this._usersService.isLoggedIn$;
 
-  this.isLoggedIn$=this._usersService.isLoggedIn$;
 
 }
-getNewData(){
-  this._formService.getAll().subscribe((result:any)=>{
-    this.dataSource=new MatTableDataSource(Object.values(result));
+getAllstart() {
+  this._sectorservice.getAll().subscribe((result) => {
+    this.dataSource = new MatTableDataSource(result);
+    this.dataSource.paginator = this.paginator;
     this.dataSource._updateChangeSubscription();
-  })
-
+  });
 }
 
-onDeleteRowClicked(id:string){
-  this._formService.delete(id)
 
+onDeleteRowClicked(id: string) {
+  this._sectorservice.delete(id);
 }
-
+onEditRowClicked(id: string) {
+  this.router.navigate(['/sectors/edit-sector'], {
+    queryParams: {
+      id: id,
+    },
+  });
+}
 
 isAllSelected() {
   const numSelected = this.selection.selected.length;
@@ -82,9 +85,15 @@ masterToggle() {
 
   this.selection.select(...this.dataSource.data);
 }
-
-onRowClicked() {
-  this.router.navigate(['/preview']);
+onAddClicked() {
+  this.router.navigate(['/sectors/add-sector']);
+}
+onRowClicked(id:string) {
+  this.router.navigate(['/sectors/preview-sector'],{
+    queryParams:{
+      id:id,
+    }
+    })
 }
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
@@ -97,20 +106,4 @@ applyFilter(event: Event) {
 ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
 }
-
-approveIt(row:Startups){
-  this._startupservice.create({
-    startupName:row.startupName,
-    logoImage:row.logoImage,
-    city:row.city,
-    sectors:row.sectors,
-    founderName:row.founderName,
-    numberOfEmployees:row.numberOfEmployees,
-    yearOfEstablishment:row.yearOfEstablishment,
-    websiteUrl:row.websiteUrl,
-    emailAddress:row.emailAddress,
-  })
-
-}
-
 }

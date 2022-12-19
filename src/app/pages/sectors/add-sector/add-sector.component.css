@@ -1,0 +1,11 @@
+form{
+  display: flex;
+  flex-direction: column;
+
+}
+.page-header{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-inline-start: 50px;
+}

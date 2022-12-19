@@ -7,6 +7,13 @@
       <input matInput (keyup)="applyFilter($event)" />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select a sector</mat-label>
+      <mat-select disableRipple>
+        <mat-option value="1" *ngFor="let droplist of dropList" >{{droplist.sectorName}}</mat-option>
+
+      </mat-select>
+    </mat-form-field>
   </div>
   <div class="action-col">
     <button mat-flat-button color="primary" (click)="onAddClicked()">

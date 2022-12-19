@@ -1,0 +1,40 @@
+<div class="page-header">
+  <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" class="back-text">Back</button>
+
+  <h2>Add Sector</h2>
+
+</div>
+<form [formGroup]="formGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>Sector Name</mat-label>
+    <input matInput formControlName="sectorName" placeholder="sector Name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sector logo</mat-label>
+    <input matInput formControlName="sectorLogo"  placeholder="sector logo">
+
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Design Color</mat-label>
+    <input matInput formControlName="designColor" placeholder="design color">
+
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Parent Category Name</mat-label>
+    <input matInput formControlName="parentCategoryName" placeholder="parent category name">
+
+  </mat-form-field>
+
+
+
+
+</form>
+<div class="actions-section">
+  <button mat-flat-button color="primary" (click)="onAddClicked()"><mat-icon>add</mat-icon>Add</button>
+
+</div>
+
