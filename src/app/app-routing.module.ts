@@ -1,37 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './pages/home/header/header.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
 import { ApproveComponent } from './pages/approve/approve.component';
 import { FormComponent } from './pages/form/form.component';
-import { PreviewComponent } from './pages/preview/preview.component';
+import { PreviewComponent } from './pages/home/preview/preview.component';
+import { HomeComponent } from './pages/home/home/home.component';
+import { UsersComponent } from './pages/users/users.component';
+import { LandingComponent } from './pages/home/landing.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'landing',
     pathMatch: 'full',
   },
 
 
   {
-    path: 'home',
+    path: 'landing',
     loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomeModule),
-
+      import('./pages/home/landing.module').then((m) => m.LandingModule),
+      component:LandingComponent,
       canLoad: [NoAuthGuard],
 
   },
 
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () =>
-  //     import('./pages/dashboard/dashboard.module').then(
-  //       (m) => m.DashboardModule
-  //     ),
-  //   canLoad: [AuthGuard],
-  // },
+
   {
     path: 'startups',
     loadChildren: () =>
@@ -43,6 +38,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/users/users.module').then((m) => m.UsersModule),
     canLoad: [NoAuthGuard],
+  },
+  {
+    path: 'sectors',
+    loadChildren: () =>
+      import('./pages/sectors/sectors.module').then((m) => m.SectorsModule),
+    canLoad: [AuthGuard],
   },
   {
     path:'form',
@@ -57,19 +58,11 @@ const routes: Routes = [
     canLoad: [AuthGuard],
 
   },
-  {
-    path:'header',
-    component: HeaderComponent,
-    canLoad: [NoAuthGuard],
-  },
-  {
-path:'preview',
-component:PreviewComponent,
-canLoad:[NoAuthGuard]
-  },
+
+
   {
     path:'**',
-    redirectTo:'home',
+    redirectTo:'landing',
     pathMatch:'full'
   }
 ];

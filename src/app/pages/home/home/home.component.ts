@@ -41,7 +41,7 @@ getAllstart() {
 }
 onCardClicked(id:string) {
 
-  this.route.navigate(['/preview'],{
+  this.route.navigate(['/landing/preview'],{
     queryParams:{
       id:id,
     }

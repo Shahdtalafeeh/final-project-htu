@@ -49,12 +49,14 @@ export class UsersService {
   authStateSubscribe() {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
-        if (!this.isloggedIn) {
-          this.router.navigate(['/home']);
-        }
-        this.getUserById(user.uid);
+this.getUserById(user.uid)
         localStorage.setItem('token', JSON.stringify(user));
         this.isLoggedIn$.next(true);
+        this.router.navigateByUrl('/')
+      }else{
+      localStorage.removeItem('token')
+        this.isLoggedIn$.next(false);
+
       }
       // } else {
       //   localStorage.removeItem('token');

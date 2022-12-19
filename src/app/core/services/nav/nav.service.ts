@@ -13,13 +13,14 @@ export class NavService {
       new NavItemDto('Startups','category','/startups','admin'),
       new NavItemDto('Form','category','/form','endUser'),
       new NavItemDto('Approve','notification_add','/approve','admin'),
+      new NavItemDto('sectors','segment','/sectors','admin'),
 
 
     ])
   }
   getToolBarMenu(){
     return new NavMenuDto('ToolBarMenu',[
-      new NavItemDto('Home','home','/home',''),
+      new NavItemDto('Home','home','/landing/home',''),
       new NavItemDto('Sign in','group','/users',''),
 
 

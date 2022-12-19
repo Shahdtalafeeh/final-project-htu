@@ -11,7 +11,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
+import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
 import { Startups } from 'src/app/core/interfaces/startups.interface';
+import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
@@ -43,6 +45,7 @@ export class StartupsComponent
   dataSource = new MatTableDataSource<Startups>([]);
   selection = new SelectionModel<any>(true, []);
   value: any;
+  dropList:Sectors[]=[]
 
   filterData = {
     sectors: '',
@@ -52,7 +55,8 @@ export class StartupsComponent
     private router: Router,
     injector: Injector,
     private _startupservice: StartupsService,
-    private _usersService: UsersService
+    private _usersService: UsersService,
+    private _sectorservice: SectorsService
   ) {
     super(injector);
   }
@@ -63,6 +67,8 @@ export class StartupsComponent
     this.dataSource.filterPredicate = function (record, filter) {
       return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
     };
+
+    this.getAllsectors()
   }
   getAllstart() {
     this._startupservice.getAll().subscribe((result) => {
@@ -73,6 +79,13 @@ export class StartupsComponent
       this.dataSource._updateChangeSubscription();
     });
   }
+  getAllsectors() {
+    this._sectorservice.getAll().subscribe((result) => {
+      this.dropList = result
+
+    });
+  }
+
   customFilterPredicate() {
     const myFilterPredicate = (data: any, filter: any) => {
       const searchString = JSON.parse(filter);
