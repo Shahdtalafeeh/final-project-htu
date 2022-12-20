@@ -1,5 +1,5 @@
 export interface Sectors{
-  sectorName:string,
+  sectors:string,
   sectorLogo:string,
   designColor:string,
   parentCategoryName:string

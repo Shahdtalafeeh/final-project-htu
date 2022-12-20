@@ -23,13 +23,13 @@ isLoggedIn$!: Observable<boolean>;
 paginator!: MatPaginator;
 displayedColumns: string[] = [
   'select',
-  'sectorName',
+  'sectors',
   'sectorLogo',
   'designColor',
   'parentCategoryName',
   'action',
 ];
-dataSource = new MatTableDataSource<Sectors>([]);
+dataSource = new MatTableDataSource<Startups>([]);
 selection = new SelectionModel<any>(true, []);
 value: any;
 

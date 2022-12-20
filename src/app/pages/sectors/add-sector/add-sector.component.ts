@@ -17,7 +17,7 @@ export class AddSectorComponent extends AppComponentBase implements OnInit {
 
   ngOnInit(): void {
     this.formGroup=this.formBuilder.group({
-      sectorName:null,
+      sectors:null,
       sectorLogo:null,
       designColor:null,
       parentCategoryName:null
@@ -26,7 +26,7 @@ export class AddSectorComponent extends AppComponentBase implements OnInit {
   }
   onAddClicked(){
     this._sectorsService.create({
-      sectorName: this.formGroup.controls['sectorName'].value,
+      sectors: this.formGroup.controls['sectors'].value,
       sectorLogo: this.formGroup.controls['sectorLogo'].value,
       designColor:this.formGroup.controls['designColor'].value,
       parentCategoryName: this.formGroup.controls['parentCategoryName'].value,

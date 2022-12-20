@@ -20,9 +20,7 @@ export class UsersService {
   dbPath = '/users';
   userRef!: AngularFireList<User>;
   userData$ = new BehaviorSubject<User>({
-    age:0,
     email:'',
-    gender:0,
     name:'',
     uId:'',
     roll:''
@@ -49,10 +47,14 @@ export class UsersService {
   authStateSubscribe() {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
-this.getUserById(user.uid)
+        if(!this.isloggedIn){
+
+          this.router.navigate(['/home'])
+        }
+        this.getUserById(user.uid)
         localStorage.setItem('token', JSON.stringify(user));
         this.isLoggedIn$.next(true);
-        this.router.navigateByUrl('/')
+
       }else{
       localStorage.removeItem('token')
         this.isLoggedIn$.next(false);
@@ -75,9 +77,7 @@ this.getUserById(user.uid)
     uId: string,
     email: string,
     name: string,
-    age: number,
     roll: string,
-    gender: number
   ): Observable<any> {
     const userObjFDB = this.angularFireDatabase.list(this.dbPath);
 
@@ -87,8 +87,7 @@ this.getUserById(user.uid)
         email: email,
         name: name,
         roll: roll,
-        age: age,
-        gender: gender,
+
       })
     );
   }

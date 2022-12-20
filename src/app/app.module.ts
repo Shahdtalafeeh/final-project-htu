@@ -28,6 +28,8 @@ import { FilterModule } from './core/pipes/filter/filter.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { LandingModule } from './pages/home/landing.module';
+import { MatSelectModule } from '@angular/material/select';
+
 // import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 // import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
@@ -47,7 +49,8 @@ const MatImports = [
   FilterModule,
   MatGridListModule,
   MatCardModule,
-  LandingModule
+  LandingModule,
+  MatSelectModule
   // ShareButtonsModule.withConfig({
   //   debug:true
   // }),
