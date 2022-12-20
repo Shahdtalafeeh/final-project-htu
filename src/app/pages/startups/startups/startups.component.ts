@@ -9,6 +9,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { filter } from 'lodash';
 import { Observable } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
@@ -44,12 +45,10 @@ export class StartupsComponent
   ];
   dataSource = new MatTableDataSource<Startups>([]);
   selection = new SelectionModel<any>(true, []);
-  value: any;
-  dropList:Sectors[]=[]
-
+  dropList:Startups[]=[]
+  apiResponse:Startups[]=[]
   filterData = {
-    sectors: '',
-    city: '',
+    sectors: ''
   };
   constructor(
     private router: Router,
@@ -68,12 +67,14 @@ export class StartupsComponent
       return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
     };
 
+
     this.getAllsectors()
   }
   getAllstart() {
     this._startupservice.getAll().subscribe((result) => {
       console.log(result);
       this.dataSource = new MatTableDataSource(result);
+      this.apiResponse=result
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.customFilterPredicate();
       this.dataSource._updateChangeSubscription();
@@ -81,7 +82,7 @@ export class StartupsComponent
   }
   getAllsectors() {
     this._sectorservice.getAll().subscribe((result) => {
-      this.dropList = result
+      this.dropList =result
 
     });
   }
@@ -95,7 +96,7 @@ export class StartupsComponent
       if (searchString.sectors !== '') {
         sectorFilter = data.sectors
           .toString()
-          .trim()
+           .trim()
           .toLowerCase()
           .includes(searchString.sectors.toLowerCase());
         finalDataFilter = finalDataFilter && sectorFilter;
@@ -154,8 +155,6 @@ export class StartupsComponent
 
     if (filterValue !== null && filterValue !== '') {
       this.filterData.sectors = filterValue.trim().toLowerCase();
-      this.filterData.city = filterValue.trim().toLowerCase();
-
       this.dataSource.filter = JSON.stringify(this.filterData);
     } else {
       this.filterData.sectors = '';
@@ -169,4 +168,16 @@ export class StartupsComponent
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  onOptionsSelected(event:any){
+
+    const selectFilter=this.apiResponse.filter((item)=>{
+       return item.sectors.toLowerCase() == event.value.toLowerCase()
+
+
+
+    })
+this.dataSource=new MatTableDataSource(selectFilter)
+
+}
 }

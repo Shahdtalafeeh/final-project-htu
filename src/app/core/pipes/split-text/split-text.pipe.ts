@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { indexOf, lastIndexOf } from 'lodash';
 
 @Pipe({
   name: 'splitText'
@@ -10,3 +11,5 @@ export class SplitTextPipe implements PipeTransform {
   }
 
 }
+
+

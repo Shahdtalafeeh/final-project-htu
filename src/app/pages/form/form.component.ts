@@ -1,7 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
+import { Startups } from 'src/app/core/interfaces/startups.interface';
 import { FormService } from 'src/app/core/services/form/form.service';
+import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 
 @Component({
   selector: 'app-form',
@@ -10,7 +12,10 @@ import { FormService } from 'src/app/core/services/form/form.service';
 })
 export class FormComponent extends AppComponentBase implements OnInit {
   formGroup!: FormGroup;
-  constructor(private formBuilder: FormBuilder, injector: Injector,private _formService: FormService) {
+  dropList:Startups[]=[]
+  fileName=""
+
+  constructor(private formBuilder: FormBuilder, injector: Injector,private _formService: FormService, private _sectorservice: SectorsService) {
     super(injector);
   }
 
@@ -27,6 +32,8 @@ export class FormComponent extends AppComponentBase implements OnInit {
       emailAddress:null,
 
     })
+    this.getAllsectors()
+
   }
   onSubmitClicked(){
     this._formService.create({
@@ -44,6 +51,17 @@ export class FormComponent extends AppComponentBase implements OnInit {
       this.back()
     })
 
+
+  }
+  getAllsectors() {
+    this._sectorservice.getAll().subscribe((result) => {
+      this.dropList =result
+
+    });
+  }
+  selectImage(event:any){
+this.fileName=event.target.value
+this.formGroup.get('logoImage')?.setValue(event.target.files[0])
 
   }
 }

@@ -29,8 +29,7 @@ export class SignupComponent extends AppComponentBase implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.formbuilder.group({
       name: [null, Validators.required],
-      age: [null, Validators.required],
-      gender: null,
+
       email: [null, [Validators.required, Validators.email]],
       password: [
         null,
@@ -57,9 +56,7 @@ export class SignupComponent extends AppComponentBase implements OnInit {
               user.user.uid,
               this.email.value,
               this.name.value,
-              this.age.value,
               'endUser',
-              this.gender.value
             );
           })
         )
@@ -91,12 +88,7 @@ export class SignupComponent extends AppComponentBase implements OnInit {
   get name() {
     return this.formGroup.controls['name'] as FormControl;
   }
-  get age() {
-    return this.formGroup.controls['age'] as FormControl;
-  }
-  get gender() {
-    return this.formGroup.controls['gender'] as FormControl;
-  }
+
   get email() {
     return this.formGroup.controls['email'] as FormControl;
   }
