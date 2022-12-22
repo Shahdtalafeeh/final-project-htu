@@ -45,7 +45,7 @@ export class StartupsComponent
   ];
   dataSource = new MatTableDataSource<Startups>([]);
   selection = new SelectionModel<any>(true, []);
-  dropList:Startups[]=[]
+  dropList:Sectors[]=[]
   apiResponse:Startups[]=[]
   filterData = {
     sectors: ''

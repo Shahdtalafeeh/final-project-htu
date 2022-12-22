@@ -11,11 +11,18 @@
       <input matInput formControlName="startupName" placeholder="startup Name">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>logo Image</mat-label>
-      <input matInput formControlName="logoImage" placeholder="logo Image">
 
-    </mat-form-field>
+
+    <div>
+      <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
+    </div>
+
+    <div >
+
+      <label class="logo" (click)="selectFile.click()">logo Image</label>
+      <input  #selectFile formControlName="logoImage" type="file" accept="image/*" (change)="selectImage($event)" hidden>
+
+    </div>
 
 
     <mat-form-field appearance="outline">

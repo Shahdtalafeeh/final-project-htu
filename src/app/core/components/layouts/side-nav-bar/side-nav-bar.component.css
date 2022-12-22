@@ -26,6 +26,5 @@ mat-sidenav{
 }
 .logout{
 margin-inline-end: 20px;
-color: var(--blue);
-
+color: var(--white);
 }

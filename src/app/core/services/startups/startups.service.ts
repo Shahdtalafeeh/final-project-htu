@@ -12,8 +12,10 @@ import { Startups } from '../../interfaces/startups.interface';
 export class StartupsService {
   dbPath = '/startups';
   startupsRef!: AngularFireList<Startups>;
+  selectedImage: any;
 
-  constructor(private angularFireDatabase: AngularFireDatabase) {
+  constructor(private angularFireDatabase: AngularFireDatabase
+  ) {
     this.startupsRef = angularFireDatabase.list(this.dbPath);
   }
   getAll(): Observable<any> {

@@ -61,7 +61,7 @@ export class SignupComponent extends AppComponentBase implements OnInit {
           })
         )
         .subscribe((result) => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/users/login']);
         });
     }
   }

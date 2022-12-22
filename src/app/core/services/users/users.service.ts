@@ -49,7 +49,7 @@ export class UsersService {
       if (user) {
         if(!this.isloggedIn){
 
-          this.router.navigate(['/home'])
+          this.router.navigate(['/all-startups'])
         }
         this.getUserById(user.uid)
         localStorage.setItem('token', JSON.stringify(user));
@@ -60,11 +60,7 @@ export class UsersService {
         this.isLoggedIn$.next(false);
 
       }
-      // } else {
-      //   localStorage.removeItem('token');
-      //   this.isLoggedIn$.next(false);
-      //   this.router.navigate(['/home']);
-      // }
+
     });
   }
   signup(email: string, password: string): Observable<UserCredential> {
@@ -104,7 +100,7 @@ export class UsersService {
   logout() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem('token');
-       this.router.navigate(['/home']);
+       this.router.navigate(['/landing']);
       this.isLoggedIn$.next(false);
     });
   }

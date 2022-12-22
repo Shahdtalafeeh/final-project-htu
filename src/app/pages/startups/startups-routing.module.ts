@@ -11,10 +11,7 @@ const routes: Routes = [
     redirectTo:'startups',
     pathMatch:'full'
   },
-  {
-    path:'startups',
-    component:StartupsComponent
-  },
+
   {
     path:'add-startup',
     component: AddStartupComponent

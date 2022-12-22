@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
-import { Startups } from 'src/app/core/interfaces/startups.interface';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
@@ -24,12 +23,12 @@ paginator!: MatPaginator;
 displayedColumns: string[] = [
   'select',
   'sectors',
-  'sectorLogo',
+
   'designColor',
   'parentCategoryName',
   'action',
 ];
-dataSource = new MatTableDataSource<Startups>([]);
+dataSource = new MatTableDataSource<Sectors>([]);
 selection = new SelectionModel<any>(true, []);
 value: any;
 

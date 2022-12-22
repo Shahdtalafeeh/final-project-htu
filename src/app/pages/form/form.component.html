@@ -9,11 +9,14 @@
       <mat-label>Startup Name</mat-label>
       <input matInput formControlName="startupName" placeholder="startup Name">
     </mat-form-field>
+    <div>
+      <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
+    </div>
 
     <div >
-      <label class="logo" for="selectFile">Logo Image</label>
-      <span>{{fileName}}</span>
-      <input  id="selectFile" formControlName="logoImage" accept="image/*" type="file" (change)="selectImage($event)" hidden>
+
+      <label class="logo" (click)="selectFile.click()">Logo Image</label>
+      <input  #selectFile formControlName="logoImage" type="file" accept="image/*" (change)="selectImage($event)" hidden>
 
     </div>
 
@@ -30,12 +33,15 @@
         <mat-option [value]="droplist.sectors" *ngFor="let droplist of dropList"  >{{droplist.sectors}}</mat-option>
 
       </mat-select>
+      <mat-error *ngIf="sectors.invalid">this field is required</mat-error>
+
     </mat-form-field>
 
 
     <mat-form-field appearance="outline">
       <mat-label>founder Name</mat-label>
       <input matInput formControlName="founderName" placeholder="founder Name">
+      <mat-error *ngIf="founderName.invalid">this field is required</mat-error>
 
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -51,11 +57,13 @@
     <mat-form-field appearance="outline">
       <mat-label>website Url</mat-label>
       <input matInput formControlName="websiteUrl" placeholder="website Url">
+      <mat-error *ngIf="websiteUrl.invalid">this field is required</mat-error>
 
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>email Address</mat-label>
       <input matInput formControlName="emailAddress" placeholder="email Address">
+      <mat-error *ngIf="emailAddress.invalid">{{getEmailErrorMessage()}}</mat-error>
 
     </mat-form-field>
 
