@@ -7,10 +7,7 @@ const routes: Routes = [
   {path:'',
 redirectTo:'sectors',
 pathMatch:'full'},
-  {
-    path:'sectors',
-    component:SectorsComponent
-  },
+
   {path:'add-sector',
 component: AddSectorComponent},
 

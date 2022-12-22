@@ -9,11 +9,12 @@ import { StartupsService } from 'src/app/core/services/startups/startups.service
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-all-startups',
+  templateUrl: './all-startups.component.html',
+  styleUrls: ['./all-startups.component.css']
 })
-export class HomeComponent implements OnInit {
+export class AllStartupsComponent implements OnInit {
+
   isLoggedIn$!: Observable<boolean>;
   centered = false;
 sectors: Sectors[]=[]
@@ -56,6 +57,5 @@ getAllsectors() {
 
   });
 }
-
 
 }

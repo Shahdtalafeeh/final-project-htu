@@ -39,7 +39,7 @@ export class LoginComponent implements  OnInit {
       this.validatorFormGroup();
     }else{
       this._usersService.login(this.email.value, this.password.value);
-      // this.router.navigate(['/home'])
+       this.router.navigate(['/all-startups'])
     }
 
   }

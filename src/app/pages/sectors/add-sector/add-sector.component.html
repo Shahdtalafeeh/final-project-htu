@@ -10,11 +10,16 @@
     <input matInput formControlName="sectors" placeholder="sector Name">
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Sector logo</mat-label>
-    <input matInput formControlName="sectorLogo"  placeholder="sector logo">
+  <div>
+    <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
+  </div>
 
-  </mat-form-field>
+  <div >
+
+    <label class="logo" (click)="selectFile.click()">Sector logo</label>
+    <input  #selectFile formControlName="sectorLogo" type="file" accept="image/*" (change)="selectImage($event)" hidden>
+
+  </div>
 
 
   <mat-form-field appearance="outline">

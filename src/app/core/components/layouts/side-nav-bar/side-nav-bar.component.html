@@ -32,14 +32,13 @@
           </mat-list>
         </ng-template>
       </div>
-    </mat-list>
 
-      <button mat-button  (click)="onLoggedoutClicked()"><mat-icon class="logout">logout</mat-icon>Logout</button>
+    </mat-list>
+    <button mat-button  (click)="onLoggedoutClicked()" class="logout"><mat-icon >logout</mat-icon>Logout</button>
+
 
   </mat-sidenav>
   <mat-sidenav-content >
-
-   <!-- <mat-toolbar class="mat-elevation-z8 change-color" > -->
       <div  style="position: fixed;  z-index: 2;">
         <button mat-icon-button (click)="snav.toggle()">
           <mat-icon style="color: var(--dark-blue)">menu</mat-icon>
