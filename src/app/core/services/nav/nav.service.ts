@@ -11,7 +11,7 @@ export class NavService {
   constructor(private _usersService: UsersService) { }
   getNavMenu(){
     return new NavMenuDto('NavMenu',[
-      new NavItemDto('All-Startups','category','/all-startups',''),
+      new NavItemDto('View-Startups','category','/all-startups',''),
 
 
       new NavItemDto('Startups','category','/startups','admin'),

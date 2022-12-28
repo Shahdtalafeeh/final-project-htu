@@ -1,19 +1,15 @@
+.col{
+  min-height:100vh ;
+
+}
 .width{
   min-width: 300px;
 
 }
-.filter-col{
-flex: 3;
-flex-basis: 150px;
-color: #c2185b;
-}
-.filter-action{
-  flex: 1;
-  flex-basis: 150px;
-  text-align: end;
-}
+
 .action-col > button{
-  margin-inline-start: 10px;
+  margin-top: 10px;
+  float: right;
 
 }
 tr{
@@ -26,5 +22,13 @@ font-size: 30px;
 }
 table{
 width: 100%;
+
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 
 }

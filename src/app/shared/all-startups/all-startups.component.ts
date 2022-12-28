@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
 import { Service } from 'src/app/core/interfaces/service.interface';
 import { PreviewService } from 'src/app/core/services/preview/preview.service';
@@ -13,8 +13,9 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './all-startups.component.html',
   styleUrls: ['./all-startups.component.css']
 })
-export class AllStartupsComponent implements OnInit {
-
+export class AllStartupsComponent implements OnInit, OnDestroy {
+  sub!: Subscription;
+  sub1!: Subscription;
   isLoggedIn$!: Observable<boolean>;
   centered = false;
 sectors: Sectors[]=[]
@@ -29,33 +30,30 @@ this.getAllstart()
 this.getAllsectors()
 
   }
-  routingToLogin(){
-    if(this._userService.isloggedIn){
-    this.route.navigate(['/form'])
 
-  }else{
-    this.route.navigate(['/users'])
-  }
-}
 getAllstart() {
-  this._startupservice.getAll().subscribe((result) => {
+ this.sub = this._startupservice.getAll().subscribe((result) => {
     this.services = result;
 
   });
 }
 onCardClicked(id:string) {
 
-  this.route.navigate(['/landing/preview'],{
+  this.route.navigate(['/all-startups/preview-all'],{
     queryParams:{
       id:id,
     }
     })
 }
 getAllsectors() {
-  this._sectorservice.getAll().subscribe((result) => {
+ this.sub1 = this._sectorservice.getAll().subscribe((result) => {
     this.sectors =result
 
   });
+}
+ngOnDestroy(){
+  this.sub.unsubscribe()
+  this.sub1.unsubscribe()
 }
 
 }

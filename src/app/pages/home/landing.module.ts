@@ -12,7 +12,8 @@ import { HeaderModule } from 'src/app/core/components/header/header.module';
 import { LandingComponent } from './landing.component';
 import { PreviewComponent } from './preview/preview.component';
 
-const MatImports = [ MatCardModule,
+const MatImports = [
+  MatCardModule,
   MatButtonModule,
   MatIconModule,
   RouterModule,
@@ -20,35 +21,26 @@ const MatImports = [ MatCardModule,
   MatRippleModule,
   MatListModule,
   MatTooltipModule,
-  HeaderModule
-
+  HeaderModule,
 ];
 
 @NgModule({
-  declarations: [HomeComponent,LandingComponent,PreviewComponent],
+  declarations: [HomeComponent, LandingComponent, PreviewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path:'',
-    redirectTo:'home',
-  pathMatch:'full'},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-{
-  path:'home',
-  component:HomeComponent
-}, {
-  path:'preview',
-  component:PreviewComponent,
-    },
-
-
-
-
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'preview',
+        component: PreviewComponent,
+      },
     ]),
-   ...MatImports
-
-
-
+    ...MatImports,
   ],
 })
 export class LandingModule {}

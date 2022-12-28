@@ -1,3 +1,7 @@
+.col{
+  min-height:100vh ;
+
+}
 .width{
     min-width: 300px;
 
@@ -24,3 +28,7 @@ h2{
   justify-content: center;
   font-size: 30px;
 }
+table{
+  width: 100%;
+
+  }

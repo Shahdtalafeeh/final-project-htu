@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
@@ -13,11 +13,14 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+
   isLoggedIn$!: Observable<boolean>;
   centered = false;
 sectors: Sectors[]=[]
 services:Service[]=[]
+sub:any
+sub1:any
   constructor(private _userService: UsersService,  private _startupservice: StartupsService,
     private route: Router,private _preview: PreviewService, private _sectorservice: SectorsService) {
 
@@ -37,7 +40,7 @@ this.getAllsectors()
   }
 }
 getAllstart() {
-  this._startupservice.getAll().subscribe((result) => {
+ this.sub = this._startupservice.getAll().subscribe((result) => {
     this.services = result;
 
   });
@@ -51,10 +54,14 @@ onCardClicked(id:string) {
     })
 }
 getAllsectors() {
-  this._sectorservice.getAll().subscribe((result) => {
+ this.sub1 = this._sectorservice.getAll().subscribe((result) => {
     this.sectors =result
 
   });
+}
+ngOnDestroy(){
+this.sub.unsubscribe()
+this.sub1.unsubscribe()
 }
 
 

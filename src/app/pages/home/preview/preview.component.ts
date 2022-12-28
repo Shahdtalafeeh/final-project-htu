@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
 
@@ -8,7 +8,7 @@ import { StartupsService } from 'src/app/core/services/startups/startups.service
   templateUrl: './preview.component.html',
   styleUrls: ['./preview.component.css']
 })
-export class PreviewComponent implements OnInit {
+export class PreviewComponent implements OnInit, OnDestroy {
 id: string=''
 startupName:string=''
     logoImage:string=''
@@ -20,6 +20,9 @@ startupName:string=''
     websiteUrl:string=''
     emailAddress:string=''
 
+    sub:any;
+    sub1:any;
+
   constructor(
 
     private _startupsService: StartupsService,
@@ -28,7 +31,7 @@ startupName:string=''
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((result)=>{
+   this.sub = this.activatedRoute.queryParams.subscribe((result)=>{
       if(result['id']){
         this.id=result['id']
       }
@@ -38,7 +41,7 @@ startupName:string=''
     this.getStartupsById()
   }
   getStartupsById(){
-    this._startupsService.getById(this.id).subscribe((result:any)=>{
+   this.sub1 = this._startupsService.getById(this.id).subscribe((result:any)=>{
       this.startupName=result['startupName']
       this.logoImage=result['logoImage']
       this.city=result['city']
@@ -51,6 +54,10 @@ startupName:string=''
 
 
 
+  }
+  ngOnDestroy(){
+    this.sub.unsubscribe()
+    this.sub1.unsubscribe()
   }
 
 }

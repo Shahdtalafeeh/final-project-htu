@@ -1,10 +1,10 @@
 <div class="page-header">
-    <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" class="back-text">Back</button>
-
-    <h2>Startup Request</h2>
+    <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" >Back</button>
 
   </div>
   <form [formGroup]="formGroup">
+    <h2>Startup Request</h2>
+
     <mat-form-field appearance="outline">
       <mat-label>Startup Name</mat-label>
       <input matInput formControlName="startupName" placeholder="startup Name">
@@ -28,8 +28,8 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Select a sector</mat-label>
-      <mat-select disableRipple  formControlName="sectors">
+      <mat-label>Select Sectors</mat-label>
+      <mat-select  formControlName="sectors" multiple>
         <mat-option [value]="droplist.sectors" *ngFor="let droplist of dropList"  >{{droplist.sectors}}</mat-option>
 
       </mat-select>

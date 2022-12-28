@@ -1,45 +1,59 @@
 <div class="page-header">
-  <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" class="back-text">Back</button>
-
-  <h2>Add Sector</h2>
-
+  <button
+    mat-flat-button
+    color="primary"
+    style="height: 35px"
+    (click)="back()"
+    class="back-text"
+  >
+    Back
+  </button>
 </div>
 <form [formGroup]="formGroup">
+  <h2>Add Sector</h2>
+
   <mat-form-field appearance="outline">
     <mat-label>Sector Name</mat-label>
-    <input matInput formControlName="sectors" placeholder="sector Name">
+    <input matInput formControlName="sectors" placeholder="sector Name" />
   </mat-form-field>
 
   <div>
-    <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
+    <img
+      [src]="imgSrc"
+      width="350px"
+      height="250px"
+      (click)="selectFile.click()"
+    />
   </div>
 
-  <div >
-
+  <div>
     <label class="logo" (click)="selectFile.click()">Sector logo</label>
-    <input  #selectFile formControlName="sectorLogo" type="file" accept="image/*" (change)="selectImage($event)" hidden>
-
+    <input
+      #selectFile
+      formControlName="sectorLogo"
+      type="file"
+      accept="image/*"
+      (change)="selectImage($event)"
+      hidden
+    />
   </div>
-
 
   <mat-form-field appearance="outline">
     <mat-label>Design Color</mat-label>
-    <input matInput formControlName="designColor" placeholder="design color">
-
+    <input matInput formControlName="designColor" placeholder="design color" />
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Parent Category Name</mat-label>
-    <input matInput formControlName="parentCategoryName" placeholder="parent category name">
-
+    <input
+      matInput
+      formControlName="parentCategoryName"
+      placeholder="parent category name"
+    />
   </mat-form-field>
-
-
-
-
 </form>
 <div class="actions-section">
-  <button mat-flat-button color="primary" (click)="onAddClicked()"><mat-icon>add</mat-icon>Add</button>
-
+  <button mat-flat-button color="primary" (click)="onAddClicked()">
+    <mat-icon>add</mat-icon>Add
+  </button>
 </div>
-

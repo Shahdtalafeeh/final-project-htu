@@ -17,23 +17,19 @@ const routes: Routes = [
     pathMatch: 'full',
   },
 
-
   {
     path: 'landing',
     loadChildren: () =>
       import('./pages/home/landing.module').then((m) => m.LandingModule),
-      component:LandingComponent,
-       canLoad: [NoAuthGuard],
-
+    component: LandingComponent,
+    canLoad: [NoAuthGuard],
   },
-
 
   {
     path: 'startups',
     loadChildren: () =>
       import('./pages/startups/startups.module').then((m) => m.StartupsModule),
-    component:StartupsComponent,
-      canLoad: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: 'users',
@@ -45,41 +41,35 @@ const routes: Routes = [
     path: 'sectors',
     loadChildren: () =>
       import('./pages/sectors/sectors.module').then((m) => m.SectorsModule),
-    component:SectorsComponent,
-      canLoad: [AuthGuard],
-  },
-  {
-    path:'form',
-    loadChildren: () =>
-    import('./pages/form/form.module').then((m) => m.FormModule),
-    component:FormComponent,
     canLoad: [AuthGuard],
-
-
   },
   {
-    path:'approve',
+    path: 'form',
+    loadChildren: () =>
+      import('./pages/form/form.module').then((m) => m.FormModule),
+    component: FormComponent,
+    canLoad: [AuthGuard],
+  },
+  {
+    path: 'approve',
     loadChildren: () =>
       import('./pages/approve/approve.module').then((m) => m.ApproveModule),
-        component: ApproveComponent,
-      canLoad: [AuthGuard],
-
+    component: ApproveComponent,
+    canLoad: [AuthGuard],
   },
   {
-    path:'all-startups',
+    path: 'all-startups',
     loadChildren: () =>
-      import('./shared/all-startups/all-startups.module').then((m) => m.AllStartupsModule),
-      component:AllStartupsComponent,
-      canLoad: [AuthGuard],
-
-  }
-,
-
+      import('./shared/all-startups/all-startups.module').then(
+        (m) => m.AllStartupsModule
+      ),
+    canLoad: [AuthGuard],
+  },
   {
-    path:'**',
-    redirectTo:'landing',
-    pathMatch:'full'
-  }
+    path: '**',
+    redirectTo: '/landing',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

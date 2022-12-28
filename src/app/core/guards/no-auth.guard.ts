@@ -16,7 +16,7 @@ export class NoAuthGuard implements  CanLoad {
 
         return true;
       }
-
+this.router.navigate(['/all-startups'])
         return false;
 
 

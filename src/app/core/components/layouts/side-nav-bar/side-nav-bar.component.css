@@ -6,10 +6,10 @@ mat-sidenav{
   background-color:var(--gray);
   padding: 1rem;
 }
-/* .main{
-  padding: 1rem;
+main{
+  padding: 0.7rem;
 
-} */
+}
 .child-items{
   margin-inline-start: 20px !important;
 }
@@ -17,6 +17,9 @@ mat-sidenav{
 
 .content{
   min-height: 100%;
+  padding: 1rem;
+  background-color: #f3f3f3;
+
 }
 
 .flex{
@@ -27,4 +30,8 @@ mat-sidenav{
 .logout{
 margin-inline-end: 20px;
 color: var(--white);
+}
+.menu-button > button{
+  position: absolute;
+  margin: 7px;
 }
