@@ -8,9 +8,16 @@ import { StartupsComponent } from './startups/startups.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'startups',
+    redirectTo:'all-startups',
     pathMatch:'full'
-  },
+  }
+  ,
+  {
+    path:'all-startups',
+    component: StartupsComponent
+
+  }
+  ,
 
   {
     path:'add-startup',
@@ -29,6 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

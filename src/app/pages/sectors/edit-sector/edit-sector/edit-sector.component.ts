@@ -1,20 +1,18 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
+import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
 import { UploadService } from 'src/app/core/services/upload/upload.service';
 
 @Component({
-  selector: 'app-edit-startup',
-  templateUrl: './edit-startup.component.html',
-  styleUrls: ['./edit-startup.component.css']
+  selector: 'app-edit-sector',
+  templateUrl: './edit-sector.component.html',
+  styleUrls: ['./edit-sector.component.css']
 })
-export class EditStartupComponent extends AppComponentBase implements OnInit {
-
+export class EditSectorComponent extends AppComponentBase implements OnInit {
   formGroup!: FormGroup;
   id: string = '';
   loading=true
@@ -24,7 +22,7 @@ export class EditStartupComponent extends AppComponentBase implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     injector: Injector,
-    private _startupsService: StartupsService,
+    private _sectorsService: SectorsService,
     private activatedRoute: ActivatedRoute,
     private _uploadService: UploadService
   ) {
@@ -38,52 +36,37 @@ export class EditStartupComponent extends AppComponentBase implements OnInit {
       }
     })
     this.formGroup = this.formBuilder.group({
-      startupName:null,
-      logoImage:null,
-      city:null,
       sectors:null,
-      founderName:null,
-      numberOfEmployees:null,
-      yearOfEstablishment:null,
-      websiteUrl:null,
-      emailAddress:null,
+      sectorLogo:null,
+      designColor:null,
+      parentCategoryName:null
     });
 
     this.getProductById()
   }
   getProductById(){
-   this._startupsService.getById(this.id).subscribe((result:any)=>{
+ this._sectorsService.getById(this.id).subscribe((result:any)=>{
       this.formGroup = this.formBuilder.group({
-        startupName: result['startupName'],
-        logoImage: result['logoImage'],
-        city:result['city'],
         sectors: result['sectors'],
-        founderName: result['founderName'],
-        numberOfEmployees: result['numberOfEmployees'],
-        yearOfEstablishment:result['yearOfEstablishment'],
-        websiteUrl: result['websiteUrl'],
-        emailAddress: result['emailAddress']
+        sectorLogo: result['sectorLogo'],
+        designColor:result['designColor'],
+        parentCategoryName: result['parentCategoryName'],
     })
     this.loading=false;
   })
   }
   onUpdateClicked() {
- this._uploadService
+this._uploadService
     .upload(this.selectedImage)
       .pipe(
         finalize(() => {
           this._uploadService.getDownloadURL().subscribe((url) => {
-            this._startupsService
+            this._sectorsService
             .update(this.id, {
-              startupName: this.formGroup.controls['startupName'].value,
-              logoImage: this.formGroup.controls['logoImage']=url,
-              city:this.formGroup.controls['city'].value,
               sectors: this.formGroup.controls['sectors'].value,
-              founderName: this.formGroup.controls['founderName'].value,
-              numberOfEmployees: this.formGroup.controls['numberOfEmployees'].value,
-              yearOfEstablishment: this.formGroup.controls['yearOfEstablishment'].value,
-              websiteUrl: this.formGroup.controls['websiteUrl'].value,
-              emailAddress: this.formGroup.controls['emailAddress'].value,
+              sectorLogo: this.formGroup.controls['sectorLogo']=url,
+              designColor:this.formGroup.controls['designColor'].value,
+              parentCategoryName: this.formGroup.controls['parentCategoryName'].value,
             })
             .then(() => {
               this.back();
@@ -106,6 +89,5 @@ export class EditStartupComponent extends AppComponentBase implements OnInit {
       this.selectedImage = null;
     }
   }
-
 
 }

@@ -1,32 +1,40 @@
-.width{
-    min-width: 300px;
+.col {
+  min-height: 100vh;
+}
+.width {
+  min-width: 300px;
+}
 
-  }
-  .filter-col{
-  flex: 3;
-  flex-basis: 150px;
-  color: #c2185b;
-  }
-  .filter-action{
-    flex: 1;
-    flex-basis: 150px;
-    text-align: end;
-  }
-  .action-col > button{
-    margin-inline-start: 10px;
-
-  }
-  tr{
-    cursor: pointer;
-  }
-h2{
+tr {
+  cursor: pointer;
+}
+h2 {
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
-table{
+table {
   width: 100%;
+  height: 100%;
+}
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.action-col > button {
+  margin-top: 10px;
+  float: right;
 }
 
 
+.container{
+  position: relative;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: auto;
+}

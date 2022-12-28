@@ -15,11 +15,12 @@ import { MatTableModule } from '@angular/material/table';
 import { FilterModule } from 'src/app/core/pipes/filter/filter.module';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
 import { AddSectorComponent } from './add-sector/add-sector.component';
+import { EditSectorComponent } from './edit-sector/edit-sector/edit-sector.component';
 
 
 @NgModule({
   declarations: [
-    SectorsComponent,AddSectorComponent
+    SectorsComponent,AddSectorComponent, EditSectorComponent
   ],
   imports: [
     CommonModule,

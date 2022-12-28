@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StartupsRoutingModule } from './startups-routing.module';
 import { StartupsComponent } from './startups/startups.component';
 import { AddStartupComponent } from './startups/add-startup/add-startup.component';
 import { EditStartupComponent } from './startups/edit-startup/edit-startup.component';
@@ -19,33 +18,36 @@ import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module
 import { FilterModule } from 'src/app/core/pipes/filter/filter.module';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
-
+import { StartupsRoutingModule } from './startups-routing.module';
+ const MatImports=[ MatFormFieldModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTableModule,
+  MatCheckboxModule,
+  MatMenuModule,
+  SplitTextModule,
+  MatPaginatorModule,
+  FormsModule,
+  ReactiveFormsModule,
+  FilterModule,
+  MatSnackBarModule,
+  MatSelectModule,]
 
 @NgModule({
   declarations: [
     StartupsComponent,
     AddStartupComponent,
-    EditStartupComponent,
-    PreviewStartupComponent
+     EditStartupComponent,
+     PreviewStartupComponent
   ],
   imports: [
     CommonModule,
-    StartupsRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatCheckboxModule,
-    MatMenuModule,
-    SplitTextModule,
-    MatPaginatorModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FilterModule,
-    MatSnackBarModule,
-    MatSelectModule
-  ]
+StartupsRoutingModule,
+   ...MatImports,
+
+
+  ],
 })
 export class StartupsModule { }

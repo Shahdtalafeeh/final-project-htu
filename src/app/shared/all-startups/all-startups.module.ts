@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AllStartupsRoutingModule } from './all-startups-routing.module';
 import { AllStartupsComponent } from './all-startups.component';
 import { MatCardModule } from '@angular/material/card';
+import { PreviewAllstartupsComponent } from './preview-allstartups/preview-allstartups.component';
+import { AllStartupsRoutingModule } from './all-startups-routing.module';
 
 
 @NgModule({
   declarations: [
-    AllStartupsComponent
+    AllStartupsComponent,
+    PreviewAllstartupsComponent
   ],
   imports: [
     CommonModule,
-    AllStartupsRoutingModule,
-    MatCardModule
+    MatCardModule,
+    AllStartupsRoutingModule
   ]
 })
 export class AllStartupsModule { }

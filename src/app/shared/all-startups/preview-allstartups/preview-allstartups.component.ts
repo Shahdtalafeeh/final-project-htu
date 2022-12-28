@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
 
 @Component({
-  selector: 'app-preview-startup',
-  templateUrl: './preview-startup.component.html',
-  styleUrls: ['./preview-startup.component.css']
+  selector: 'app-preview-allstartups',
+  templateUrl: './preview-allstartups.component.html',
+  styleUrls: ['./preview-allstartups.component.css']
 })
-export class PreviewStartupComponent implements OnInit, OnDestroy {
+export class PreviewAllstartupsComponent implements OnInit, OnDestroy {
   id: string=''
   startupName:string=''
       logoImage:string=''
@@ -20,9 +19,8 @@ export class PreviewStartupComponent implements OnInit, OnDestroy {
       websiteUrl:string=''
       emailAddress:string=''
 
-      sub!:Subscription;
-      sub1!:Subscription;
-
+      sub:any;
+      sub1:any;
 
     constructor(
 
@@ -52,13 +50,10 @@ export class PreviewStartupComponent implements OnInit, OnDestroy {
       this.sectors=result['sectors']
 
       })
-
-
+    }
+    ngOnDestroy(){
+      this.sub.unsubscribe();
+      this.sub1.unsubscribe();
 
     }
-    ngOnDestroy() {
-      this.sub.unsubscribe()
-      this.sub1.unsubscribe()
-    }
-
 }

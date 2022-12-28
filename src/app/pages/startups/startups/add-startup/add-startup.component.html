@@ -1,10 +1,11 @@
 <div class="page-header">
     <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" class="back-text">Back</button>
 
-    <h2>Add Startup</h2>
 
   </div>
   <form [formGroup]="formGroup">
+    <h2>Add Startup</h2>
+
     <mat-form-field appearance="outline">
       <mat-label>Startup Name</mat-label>
       <input matInput formControlName="startupName" placeholder="startup Name">
