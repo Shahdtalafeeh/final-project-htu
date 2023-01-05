@@ -6,21 +6,13 @@ mat-sidenav{
   background-color:var(--gray);
   padding: 1rem;
 }
-main{
-  padding: 0.7rem;
 
-}
 .child-items{
   margin-inline-start: 20px !important;
 }
 
 
-.content{
-  min-height: 100%;
-  padding: 1rem;
-  background-color: #f3f3f3;
 
-}
 
 .flex{
   display: flex;
@@ -32,6 +24,32 @@ margin-inline-end: 20px;
 color: var(--white);
 }
 .menu-button > button{
-  position: absolute;
   margin: 7px;
+}
+main{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   height: 100vh;
+}
+mat-sidenav-content {
+  background-image: url(https://thumbs.dreamstime.com/b/abstract-modern-flame-background-colorful-dynamic-flames-unique-easy-editing-color-change-other-manipulation-included-91502901.jpg);
+  background-size: cover;
+  background-attachment: local;
+  background-position: center;
+
+}
+.mat-drawer-content{
+  height: auto;
+}
+ @media screen and (max-width: 960px) {
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content:unset;
+     height: 100vh;
+
+  }
 }

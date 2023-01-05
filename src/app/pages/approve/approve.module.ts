@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
+import { PreviewComponent } from './preview/preview.component';
 const MatImports = [
   MatTableModule,
   MatPaginatorModule,
@@ -28,7 +29,7 @@ const MatImports = [
 ];
 
 @NgModule({
-  declarations: [ApproveComponent],
+  declarations: [ApproveComponent, PreviewComponent],
   imports: [
     CommonModule,
     ApproveRoutingModule,

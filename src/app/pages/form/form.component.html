@@ -1,74 +1,119 @@
-<div class="page-header">
-    <button  mat-flat-button  color="primary" style="height: 35px;" (click)="back()" >Back</button>
-
+<div class="col">
+  <div class="page-header">
+    <button mat-flat-button color="primary" style="height: 35px" (click)="back()">
+      Back
+    </button>
   </div>
+
   <form [formGroup]="formGroup">
-    <h2>Startup Request</h2>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Startup Name</mat-label>
-      <input matInput formControlName="startupName" placeholder="startup Name">
-    </mat-form-field>
-    <div>
-      <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
-    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <h2>Startup Request</h2>
 
-    <div >
-
-      <label class="logo" (click)="selectFile.click()">Logo Image</label>
-      <input  #selectFile formControlName="logoImage" type="file" accept="image/*" (change)="selectImage($event)" hidden>
+      <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['logoImage'].value" />
+      <label for="file" class="logo"> Logo </label>
+      <input
+        id="file"
+        type="file"
+        (change)="selectImage($event)"
+        accept="image/*"
+      />
 
     </div>
 
 
-    <mat-form-field appearance="outline">
-      <mat-label>city</mat-label>
-      <input matInput formControlName="city" placeholder="city">
+    <div style="display: flex; flex-direction: row; gap: 10px">
+      <mat-form-field appearance="outline">
+        <mat-label>Startup Name</mat-label>
+        <input
+          matInput
+          formControlName="startupName"
+          placeholder="startup Name"
+        />
+        <mat-error *ngIf="formGroup.get('startupName')?.invalid">{{
+          getErrorMessage(formGroup.get("startupName"))
+        }}</mat-error>
+      </mat-form-field>
 
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>city</mat-label>
+        <input matInput formControlName="city" placeholder="city" />
+      </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Select Sectors</mat-label>
-      <mat-select  formControlName="sectors" multiple>
-        <mat-option [value]="droplist.sectors" *ngFor="let droplist of dropList"  >{{droplist.sectors}}</mat-option>
+    <div style="display: flex; flex-direction: row; gap: 10px">
+      <mat-form-field appearance="fill">
+        <mat-label>Select a sector</mat-label>
+        <mat-select multiple formControlName="sectors">
+          <mat-option
+            [value]="droplist.sectors"
+            *ngFor="let droplist of dropList"
+            >{{ droplist.sectors }}</mat-option
+          >
+        </mat-select>
+        <mat-error *ngIf="formGroup.get('sectors')?.invalid">{{
+          getErrorMessage(formGroup.get("sectors"))
+        }}</mat-error>
+      </mat-form-field>
 
-      </mat-select>
-      <mat-error *ngIf="sectors.invalid">this field is required</mat-error>
-
-    </mat-form-field>
-
-
-    <mat-form-field appearance="outline">
-      <mat-label>founder Name</mat-label>
-      <input matInput formControlName="founderName" placeholder="founder Name">
-      <mat-error *ngIf="founderName.invalid">this field is required</mat-error>
-
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>number Of Employees</mat-label>
-      <input matInput type="number" formControlName="numberOfEmployees" placeholder="number Of Employees">
-
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>year Of Establishment</mat-label>
-      <input matInput type="number" formControlName="yearOfEstablishment" placeholder="year Of Establishment">
-
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>founder Name</mat-label>
+        <input
+          matInput
+          formControlName="founderName"
+          placeholder="founder Name"
+        />
+        <mat-error *ngIf="formGroup.get('founderName')?.invalid">{{
+          getErrorMessage(formGroup.get("founderName"))
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div style="display: flex; flex-direction: row; gap: 10px">
+      <mat-form-field appearance="outline">
+        <mat-label>number Of Employees</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="numberOfEmployees"
+          placeholder="number Of Employees"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>year Of Establishment</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="yearOfEstablishment"
+          placeholder="year Of Establishment"
+        />
+      </mat-form-field>
+    </div>
     <mat-form-field appearance="outline">
       <mat-label>website Url</mat-label>
-      <input matInput formControlName="websiteUrl" placeholder="website Url">
-      <mat-error *ngIf="websiteUrl.invalid">this field is required</mat-error>
-
+      <input matInput formControlName="websiteUrl" placeholder="website Url" />
+      <mat-error *ngIf="formGroup.get('websiteUrl')?.invalid">{{
+        getErrorMessage(formGroup.get("websiteUrl"))
+      }}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>email Address</mat-label>
-      <input matInput formControlName="emailAddress" placeholder="email Address">
-      <mat-error *ngIf="emailAddress.invalid">{{getEmailErrorMessage()}}</mat-error>
-
+      <input
+        matInput
+        formControlName="emailAddress"
+        placeholder="email Address"
+      />
+      <mat-error *ngIf="formGroup.get('emailAddress')?.invalid">{{
+        getErrorMessage(formGroup.get("emailAddress"))
+      }}</mat-error>
     </mat-form-field>
 
-  </form>
-  <div class="actions-section">
-    <button mat-flat-button color="primary" (click)="onSubmitClicked()">Submit</button>
 
-  </div>
+  </form>
+
+     <div class="actions-section">
+      <button mat-flat-button color="primary" (click)="onSubmitClicked()">
+        Submit
+      </button>
+    </div>
+</div>
+

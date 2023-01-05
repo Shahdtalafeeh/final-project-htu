@@ -1,8 +1,8 @@
 export interface Service{
   id:string,
-  sectors:string,
+  sectors:any[],
   startupName:string,
-    logoImage:string
+    logoImage?:string
 
 
 

@@ -1,13 +1,12 @@
 <div class="col">
   <h2>Sectors</h2>
-
-      <mat-form-field class="width" appearance="outline">
+<div >
+      <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput (keyup)="applyFilter($event)" />
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-
-
+</div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
 
@@ -59,6 +58,7 @@
       *matRowDef="let row; columns: displayedColumns"
     ></tr>
   </table>
+
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons

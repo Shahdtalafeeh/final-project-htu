@@ -1,5 +1,6 @@
 export interface Sectors{
-  sectors:string,
+  id?:String,
+  sectors?:string,
   sectorLogo?:string,
   designColor?:string,
   parentCategoryName?:string

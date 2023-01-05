@@ -1,16 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { StartupsService } from 'src/app/core/services/startups/startups.service';
+import { FormService } from 'src/app/core/services/form/form.service';
 
 @Component({
-  selector: 'app-preview-startup',
-  templateUrl: './preview-startup.component.html',
-  styleUrls: ['./preview-startup.component.css']
+  selector: 'app-preview',
+  templateUrl: './preview.component.html',
+  styleUrls: ['./preview.component.css']
 })
-export class PreviewStartupComponent implements OnInit, OnDestroy {
-  id: string=''
-  startupName:string=''
+export class PreviewComponent implements OnInit {
+  id: string='';
+  startupName: string='';
       logoImage:any
       city:string=''
       sectors:string=''
@@ -20,29 +20,28 @@ export class PreviewStartupComponent implements OnInit, OnDestroy {
       websiteUrl:string=''
       emailAddress:string=''
 
-      sub!:Subscription;
-      sub1!:Subscription;
+     sub!:Subscription;
+     sub1!:Subscription;
 
 
     constructor(
 
-      private _startupsService: StartupsService,
+      private _formService: FormService,
       private activatedRoute: ActivatedRoute
     ) {
     }
 
     ngOnInit(): void {
-     this.sub = this.activatedRoute.queryParams.subscribe((result)=>{
+     this.activatedRoute.queryParams.subscribe((result)=>{
         if(result['id']){
           this.id=result['id']
         }
       })
+console.log(this.getStartupsById())
 
-
-      this.getStartupsById()
     }
     getStartupsById(){
-     this.sub1 = this._startupsService.getById(this.id).subscribe((result:any)=>{
+      this._formService.getById(this.id).subscribe((result:any)=>{
         this.startupName=result['startupName']
         this.logoImage=result['logoImage']
         this.city=result['city']
@@ -50,14 +49,10 @@ export class PreviewStartupComponent implements OnInit, OnDestroy {
         this.founderName=result['founderName']
       this.numberOfEmployees=result['numberOfEmployees']
       this.sectors=result['sectors']
+      this.websiteUrl=result['websiteUrl']
 
       })
 
 
     }
-    ngOnDestroy() {
-      this.sub.unsubscribe()
-      this.sub1.unsubscribe()
-    }
-
 }

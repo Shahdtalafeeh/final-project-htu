@@ -54,7 +54,6 @@ const routes: Routes = [
     path: 'approve',
     loadChildren: () =>
       import('./pages/approve/approve.module').then((m) => m.ApproveModule),
-    component: ApproveComponent,
     canLoad: [AuthGuard],
   },
   {
