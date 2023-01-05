@@ -9,10 +9,10 @@ export class UploadService {
 storageRef:AngularFireStorageReference
 fileUrl:string=''
   constructor(private storage: AngularFireStorage) {
-this.storageRef=storage.ref(this.dbpath)
+this.storageRef=storage.ref('')
    }
    upload(file:File){
-    const filePath=`${this.dbpath}/${file.name}`
+    const filePath = `${this.dbpath}/${new Date()}${file.name}`;
     this.storageRef=this.storage.ref(filePath)
     return this.storage.upload(filePath,file).snapshotChanges()
 
@@ -20,4 +20,5 @@ this.storageRef=storage.ref(this.dbpath)
    getDownloadURL(){
     return this.storageRef.getDownloadURL()
    }
+
 }

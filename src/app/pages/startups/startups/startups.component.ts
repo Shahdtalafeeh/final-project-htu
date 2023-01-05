@@ -60,9 +60,9 @@ export class StartupsComponent
   ngOnInit(): void {
     this.getAllstart();
     this.isLoggedIn$ = this._usersService.isLoggedIn$;
-    this.dataSource.filterPredicate = function (record, filter) {
-      return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
-    };
+    // this.dataSource.filterPredicate = function (record, filter) {
+    //   return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
+    // };
 
 
     this.getAllsectors()

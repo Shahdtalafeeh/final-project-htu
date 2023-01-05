@@ -10,14 +10,14 @@ import { UploadService } from 'src/app/core/services/upload/upload.service';
 @Component({
   selector: 'app-edit-sector',
   templateUrl: './edit-sector.component.html',
-  styleUrls: ['./edit-sector.component.css']
+  styleUrls: ['./edit-sector.component.css'],
 })
 export class EditSectorComponent extends AppComponentBase implements OnInit {
   formGroup!: FormGroup;
   id: string = '';
-  loading=true
-  imgSrc: string = '/assets/img/uploadImg.jpg';
-  selectedImage: any = null;
+  loading = true;
+  imgSrc: any;
+  color: string = '#c2185b';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,67 +27,85 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
     private _uploadService: UploadService
   ) {
     super(injector);
+
+    this.formGroup = this.formBuilder.group({
+      sectors: null,
+      sectorLogo: null,
+      designColor: null,
+      parentCategoryName: null,
+    });
   }
 
   ngOnInit(): void {
-  this.activatedRoute.queryParams.subscribe((result)=>{
-      if(result['id']){
-        this.id=result['id']
+    this.activatedRoute.queryParams.subscribe((result) => {
+      if (result['id']) {
+        this.id = result['id'];
+        this.getSectorById();
       }
-    })
-    this.formGroup = this.formBuilder.group({
-      sectors:null,
-      sectorLogo:null,
-      designColor:null,
-      parentCategoryName:null
     });
 
-    this.getProductById()
   }
-  getProductById(){
- this._sectorsService.getById(this.id).subscribe((result:any)=>{
+  getSectorById() {
+    this._sectorsService.getById(this.id).subscribe((result: any) => {
       this.formGroup = this.formBuilder.group({
         sectors: result['sectors'],
         sectorLogo: result['sectorLogo'],
-        designColor:result['designColor'],
+        designColor: result['designColor'],
         parentCategoryName: result['parentCategoryName'],
-    })
-    this.loading=false;
-  })
+      });
+      this.imgSrc = result['sectorLogo'];
+
+      this.loading = false;
+    });
   }
   onUpdateClicked() {
-this._uploadService
-    .upload(this.selectedImage)
-      .pipe(
-        finalize(() => {
-          this._uploadService.getDownloadURL().subscribe((url) => {
-            this._sectorsService
-            .update(this.id, {
-              sectors: this.formGroup.controls['sectors'].value,
-              sectorLogo: this.formGroup.controls['sectorLogo']=url,
-              designColor:this.formGroup.controls['designColor'].value,
-              parentCategoryName: this.formGroup.controls['parentCategoryName'].value,
-            })
-            .then(() => {
-              this.back();
-            });
-          });
-        })
-      )
-      .subscribe();
-
-
-  }
-  selectImage(event: any) {
-    if (event.target.value && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => (this.imgSrc = e.target.result);
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
+    if (this.formGroup.controls['sectorLogo'].value.name) {
+      this.upload();
     } else {
-      this.imgSrc = '/assets/img/uploadImg.jpg';
-      this.selectedImage = null;
+      this.updateSectors();
     }
   }
+  upload() {
+    this._uploadService
+      .upload(this.formGroup.controls['sectorLogo'].value)
+      .subscribe((file) => {
+        if (file?.metadata) {
+          this.getDownloadURL();
+        }
+      });
+  }
+  getDownloadURL() {
+    this._uploadService.getDownloadURL().subscribe((url) => {
+      console.log();
+      this.formGroup.controls['sectorLogo'].setValue(url);
+      this.updateSectors();
+    });
+  }
 
+  updateSectors() {
+    this._sectorsService
+      .update(this.id, {
+        sectors: this.formGroup.controls['sectors'].value,
+        sectorLogo: this.formGroup.controls['sectorLogo'].value,
+        designColor: this.formGroup.controls['designColor'].value,
+        parentCategoryName: this.formGroup.controls['parentCategoryName'].value,
+      })
+      .then(() => {
+        this.back();
+      });
+  }
+
+  onFileInputChange($event: any) {
+    console.log($event);
+    this.formGroup.controls['sectorLogo'].setValue($event.target.files[0]);
+
+    const reader = new FileReader();
+    reader.onload = (e) => (this.imgSrc = reader.result);
+    reader.readAsDataURL(this.formGroup.controls['sectorLogo'].value);
+  }
+
+  onChangeColor(color: string): void {
+    this.color = color;
+    this.formGroup.controls['designColor'].patchValue(color);
+  }
 }

@@ -84,8 +84,12 @@ export class ApproveComponent
     this.selection.select(...this.dataSource.data);
   }
 
-  onRowClicked() {
-    this.router.navigate(['/preview']);
+  onRowClicked(id:string) {
+    this.router.navigate(['/approve/preview-request'],{
+      queryParams:{
+        id:id,
+      }
+      })
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

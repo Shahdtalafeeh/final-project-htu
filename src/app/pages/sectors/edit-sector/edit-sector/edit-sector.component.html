@@ -1,44 +1,62 @@
-<div class="page-header">
-  <button  mat-flat-button  style="  height: 35px;
-  " color="primary" (click)="back()" class="back-text">Back</button>
-
-  <h2>Update startup</h2>
-
-</div>
-<form [formGroup]="formGroup" *ngIf="!loading">
-  <mat-form-field appearance="outline">
-    <mat-label>Sector Name</mat-label>
-    <input matInput formControlName="sectors" placeholder="Sector Name">
-  </mat-form-field>
-
-
-
-  <div>
-    <img [src]="imgSrc" width="350px" height="250px" (click)="selectFile.click()">
-  </div>
-
-  <div >
-
-    <label class="logo" (click)="selectFile.click()">logo Image</label>
-    <input  #selectFile formControlName="sectorLogo" type="file" accept="image/*" (change)="selectImage($event)" hidden>
+<div class="col">
+  <div class="page-header">
+    <button
+      mat-flat-button
+      style="height: 35px"
+      color="primary"
+      (click)="back()"
+      class="back-text"
+    >
+      Back
+    </button>
 
   </div>
+    <form [formGroup]="formGroup" *ngIf="!loading">
+      <h2>Update Sector</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sector Name</mat-label>
+        <input matInput formControlName="sectors" placeholder="Sector Name" />
+      </mat-form-field>
+
+      <input
+        id="file"
+        type="file"
+        (change)="onFileInputChange($event)"
+        accept="image/*"
+      />
+    <img [src]="imgSrc" alt=""
+    *ngIf="formGroup.controls['sectorLogo'].value">
+    <label for="file" class="logo"> Logo </label>
 
 
-  <mat-form-field appearance="outline">
-    <mat-label>Design Color</mat-label>
-    <input matInput formControlName="designColor" placeholder="design color">
+      <div class="flex-row">
+        <mat-label>Pick A Design Color!</mat-label>
+        <input
+          matInput
+          [(colorPicker)]="color"
+          class="color"
+          (colorPickerChange)="onChangeColor($event)"
+          formControlName="designColor"
+          [style.background]="formGroup.controls['designColor'].value"
 
-  </mat-form-field>
+        />
+      </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Parent Category Name</mat-label>
-    <input matInput formControlName="parentCategoryName" placeholder="parent category name">
+      <mat-form-field appearance="outline">
+        <mat-label>Parent Category Name</mat-label>
+        <input
+          matInput
+          formControlName="parentCategoryName"
+          placeholder="parent category name"
+        />
+      </mat-form-field>
+    </form>
 
-  </mat-form-field>
-
-</form>
-<div class="actions-section">
-  <button mat-flat-button color="primary" (click)="onUpdateClicked()"><mat-icon>update</mat-icon>Update</button>
-
+  <div class="actions-section">
+    <button mat-flat-button color="primary" (click)="onUpdateClicked()">
+      <mat-icon>update</mat-icon>Update
+    </button>
+  </div>
 </div>
+

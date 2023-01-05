@@ -16,11 +16,13 @@ import { FilterModule } from 'src/app/core/pipes/filter/filter.module';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
 import { AddSectorComponent } from './add-sector/add-sector.component';
 import { EditSectorComponent } from './edit-sector/edit-sector/edit-sector.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { PreviewSectorComponent } from './preview-sector/preview-sector.component';
 
 
 @NgModule({
   declarations: [
-    SectorsComponent,AddSectorComponent, EditSectorComponent
+    SectorsComponent,AddSectorComponent, EditSectorComponent, PreviewSectorComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { EditSectorComponent } from './edit-sector/edit-sector/edit-sector.compo
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    FilterModule
+    FilterModule,
+    ColorPickerModule
   ]
 })
 export class SectorsModule { }

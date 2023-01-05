@@ -1,56 +1,69 @@
-
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #snav>
     <mat-list>
       <div *ngFor="let item of navServiceList.children">
         <div *ngIf="item.children.length === 0; else hasChildren">
-          <a [routerLink]="[item.route]" (click)="onItemClicked()" *ngIf="userInfo && (userInfo.roll ===item.roll || item.roll.length ===0)" class="text">
-
-          <mat-list-item>
-            <mat-icon mat-list-icon class="icon">{{ item.icon }}</mat-icon>
-            <div mat-line class="text">{{ item.displayName }}</div>
-
-          </mat-list-item>
-        </a>
+          <a
+            [routerLink]="[item.route]"
+            (click)="onItemClicked()"
+            *ngIf="
+              userInfo &&
+              (userInfo.roll === item.roll || item.roll.length === 0)
+            "
+            class="text"
+          >
+            <mat-list-item>
+              <mat-icon mat-list-icon class="icon">{{ item.icon }}</mat-icon>
+              <div mat-line class="text">{{ item.displayName }}</div>
+            </mat-list-item>
+          </a>
         </div>
 
         <ng-template #hasChildren>
-          <mat-list-item *ngIf="userInfo && (userInfo.roll ===item.roll || item.roll.length ===0)">
+          <mat-list-item
+            *ngIf="
+              userInfo &&
+              (userInfo.roll === item.roll || item.roll.length === 0)
+            "
+          >
             <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-            <div mat-line >{{ item.displayName }}</div>
+            <div mat-line>{{ item.displayName }}</div>
           </mat-list-item>
-          <mat-list >
+          <mat-list>
             <div *ngFor="let childItem of item.children">
-              <a [routerLink]="[childItem.route]" (click)="onItemClicked()" *ngIf="userInfo &&(userInfo.roll ===childItem.roll || childItem.roll.length ===0) " class="text">
-
-              <mat-list-item class="child-items">
-                <mat-icon mat-list-icon>{{ childItem.icon }}</mat-icon>
-                <div mat-line>{{ childItem.displayName }}</div>
-              </mat-list-item>
+              <a
+                [routerLink]="[childItem.route]"
+                (click)="onItemClicked()"
+                *ngIf="
+                  userInfo &&
+                  (userInfo.roll === childItem.roll ||
+                    childItem.roll.length === 0)
+                "
+                class="text"
+              >
+                <mat-list-item class="child-items">
+                  <mat-icon mat-list-icon>{{ childItem.icon }}</mat-icon>
+                  <div mat-line>{{ childItem.displayName }}</div>
+                </mat-list-item>
               </a>
             </div>
           </mat-list>
         </ng-template>
       </div>
-
     </mat-list>
-    <button mat-button  (click)="onLoggedoutClicked()" class="logout"><mat-icon >logout</mat-icon>Logout</button>
-
-
+    <button mat-button (click)="onLoggedoutClicked()" class="logout">
+      <mat-icon>logout</mat-icon>Logout
+    </button>
   </mat-sidenav>
-  <mat-sidenav-content >
-<div class="menu-button">
-        <button mat-icon-button (click)="snav.toggle()">
-          <mat-icon style="color: var(--dark-blue);">menu</mat-icon>
-        </button>
-      </div>
+  <mat-sidenav-content class="mat-elevation-z8">
+    <div class="menu-button">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon style="color: var(--dark-blue)">menu</mat-icon>
+      </button>
+    </div>
 
-    <main>
-      <div class="mat-elevation-z8 content">
-        <router-outlet></router-outlet>
-
-      </div>
-
+    <main class="content">
+      <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

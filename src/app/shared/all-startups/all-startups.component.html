@@ -3,14 +3,14 @@
   <div class="flex-row">
     <mat-card *ngFor="let sector of sectors">
       <mat-card-header class="title">
-        <mat-card-title>{{ sector.sectors }}</mat-card-title>
+        <mat-card-title [style.color]="sector.designColor">{{ sector.sectors }}</mat-card-title>
       </mat-card-header>
       <div class="flex-row">
-        <div *ngFor="let service of services">
-          <div  class="col" *ngIf="sector.sectors == service.sectors">
+        <div *ngFor="let startup of startups">
+          <div  class="col" *ngIf="startup.sectors.indexOf(sector.sectors) !== -1">
             <img
-              (click)="onCardClicked(service.id)"
-              [src]="service.logoImage"
+              (click)="onCardClicked(startup.id)"
+              [src]="startup.logoImage"
               alt="Photo of a Shiba Inu"
               class="img"
             />

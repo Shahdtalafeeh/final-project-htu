@@ -1,21 +1,16 @@
 .col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
   min-height:100vh ;
+padding: 0px 6.7rem;}
 
-}
-.width{
-    min-width: 300px;
-
-  }
   .filter-col{
   flex: 3;
   flex-basis: 150px;
-  color: #c2185b;
   }
-  .filter-action{
-    flex: 1;
-    flex-basis: 150px;
-    text-align: end;
-  }
+
   .action-col > button{
     margin-inline-start: 10px;
 
@@ -27,8 +22,13 @@ h2{
   display: flex;
   justify-content: center;
   font-size: 30px;
+  text-align: center;
 }
 table{
   width: 100%;
 
+  }
+  .container{
+    position: relative;
+    overflow: auto;
   }

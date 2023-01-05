@@ -19,7 +19,7 @@ export class AllStartupsComponent implements OnInit, OnDestroy {
   isLoggedIn$!: Observable<boolean>;
   centered = false;
 sectors: Sectors[]=[]
-services:Service[]=[]
+startups:Service[]=[]
   constructor(private _userService: UsersService,  private _startupservice: StartupsService,
     private route: Router,private _preview: PreviewService, private _sectorservice: SectorsService) {
 
@@ -33,7 +33,7 @@ this.getAllsectors()
 
 getAllstart() {
  this.sub = this._startupservice.getAll().subscribe((result) => {
-    this.services = result;
+    this.startups = result;
 
   });
 }

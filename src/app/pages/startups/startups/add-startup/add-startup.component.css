@@ -1,8 +1,13 @@
+.col {
+  background-color: var(--white);
+  max-width: 560px;
+  padding: 10px;
+  box-shadow: 0px 8px 9px 7px #8888;
+  margin: auto;
+
+}
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .logo {
@@ -19,8 +24,13 @@ form {
   border-radius: 4px;
 }
 mat-form-field {
-  min-width: 700px;
+  width: 100%;
+  max-height: 60px;
 }
-.page-header > button{
-  float: right;
+
+#file {
+  display: none;
+}
+img {
+  width: 100px;
 }
