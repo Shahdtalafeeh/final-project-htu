@@ -1,28 +1,36 @@
 .background{
-
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .flex{
   display: flex;
-  flex-wrap: wrap;
-gap: 20px;
+flex-direction: column;
+  gap: 20px;
 max-width: 700px;
+padding: 52px;
+background-color: var(--white) ;
+box-shadow: 2px 3px 4px 3px #8888;
 }
-
+.col-1{
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  width: 100%;
+}
 .col{
-
    display: flex;
    flex-direction: column;
-   flex: 1;
-   margin: 10px;
+align-items: center;
+  flex: 1;
+   width: 100%;
 }
+
 .name{
   font-size: 40px;
   font-weight: 450;
   color: var(--dark-blue);
+
 
 
 }
@@ -30,6 +38,13 @@ max-width: 700px;
   color: var(--dark-blue);
   font-size: 20px;
   font-weight: 0;
-  margin: 10px;
+  width: 100%;
 
+}
+.details > span{
+  color: rgb(38, 84, 235);
+  font-weight: 450px;
+}
+a{
+  color: black;
 }

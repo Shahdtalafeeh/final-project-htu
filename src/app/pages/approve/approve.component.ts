@@ -117,7 +117,10 @@ export class ApproveComponent
     });
   }
   ngOnDestroy() {
-    this.sub.unsubscribe()
+    if(this.sub){
+      this.sub.unsubscribe()
+
+    }
 
   }
 }

@@ -16,7 +16,6 @@ import { Sectors } from 'src/app/core/interfaces/sectors.imterface';
 import { Startups } from 'src/app/core/interfaces/startups.interface';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { StartupsService } from 'src/app/core/services/startups/startups.service';
-import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'app-startups',
@@ -43,15 +42,15 @@ export class StartupsComponent
   ];
   dataSource = new MatTableDataSource<Startups>([]);
   selection = new SelectionModel<any>(true, []);
-  dropList:Sectors[]=[]
+  dropList: Sectors[] = [];
   filterData = {
-    sectors: ''
+    sectors: '',
+    startupName: '',
   };
   constructor(
     private router: Router,
     injector: Injector,
     private _startupservice: StartupsService,
-    private _usersService: UsersService,
     private _sectorservice: SectorsService
   ) {
     super(injector);
@@ -59,16 +58,16 @@ export class StartupsComponent
 
   ngOnInit(): void {
     this.getAllstart();
-    this.isLoggedIn$ = this._usersService.isLoggedIn$;
-    // this.dataSource.filterPredicate = function (record, filter) {
-    //   return record.sectors.toLocaleLowerCase() == filter.toLocaleLowerCase();
-    // };
-
-
-    this.getAllsectors()
+    this.isLoggedIn$ = this.usersService.isLoggedIn$;
+    this.dataSource.filterPredicate = function (record, filter) {
+      return (
+        record.startupName.toLocaleLowerCase() == filter.toLocaleLowerCase()
+      );
+    };
+    this.getAllsectors();
   }
   getAllstart() {
-   this.sub = this._startupservice.getAll().subscribe((result) => {
+    this.sub = this._startupservice.getAll().subscribe((result) => {
       this.dataSource = new MatTableDataSource(result);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.customFilterPredicate();
@@ -76,9 +75,8 @@ export class StartupsComponent
     });
   }
   getAllsectors() {
-   this.sub1 = this._sectorservice.getAll().subscribe((result) => {
-      this.dropList =result
-
+    this.sub1 = this._sectorservice.getAll().subscribe((result) => {
+      this.dropList = result;
     });
   }
 
@@ -86,16 +84,24 @@ export class StartupsComponent
     const myFilterPredicate = (data: any, filter: any) => {
       const searchString = JSON.parse(filter);
       let sectorFilter = null;
+      let startupFilter = null;
       let finalDataFilter = true;
       if (searchString.sectors !== null) {
         sectorFilter = data.sectors
           .toString()
-           .trim()
+          .trim()
           .toLowerCase()
           .includes(searchString.sectors.toLowerCase());
         finalDataFilter = finalDataFilter && sectorFilter;
       }
-
+      if (searchString.startupName !== '') {
+        startupFilter = data.startupName
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(searchString.startupName.toLowerCase());
+        finalDataFilter = finalDataFilter && startupFilter;
+      }
 
       return finalDataFilter;
     };
@@ -130,44 +136,41 @@ export class StartupsComponent
   onAddClicked() {
     this.router.navigate(['/startups/add-startup']);
   }
-  onRowClicked(id:string) {
-    this.router.navigate(['/startups/preview-startup'],{
-      queryParams:{
-        id:id,
-      }
-      })
+  onRowClicked(id: string) {
+    this.router.navigate(['/startups/preview-startup'], {
+      queryParams: {
+        id: id,
+      },
+    });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 
     if (filterValue !== null && filterValue !== '') {
-      this.filterData.sectors = filterValue.trim().toLowerCase();
+      this.filterData.startupName = filterValue.trim().toLowerCase();
       this.dataSource.filter = JSON.stringify(this.filterData);
     } else {
-      this.filterData.sectors = '';
+      this.filterData.startupName = '';
       this.dataSource.filter = JSON.stringify(this.filterData);
     }
-
-
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  onOptionsSelected(event:any){
-if(event.value != null){
-
-  this.filterData.sectors = event.value.toLowerCase();
-  this.dataSource.filter = JSON.stringify(this.filterData);
-} else {
-  this.filterData.sectors = '';
-  this.dataSource.filter = JSON.stringify(this.filterData);
-}
-
-
-}
-ngOnDestroy(){
-  this.sub.unsubscribe();
-  this.sub1.unsubscribe();
-}
+  onOptionsSelected(event: any) {
+    if (event.value != null) {
+      this.filterData.sectors = event.value.toLowerCase();
+      this.dataSource.filter = JSON.stringify(this.filterData);
+    } else {
+      this.filterData.sectors = '';
+      this.dataSource.filter = JSON.stringify(this.filterData);
+    }
+  }
+  ngOnDestroy() {
+    if (this.sub && this.sub1) {
+      this.sub.unsubscribe();
+      this.sub1.unsubscribe();
+    }
+  }
 }

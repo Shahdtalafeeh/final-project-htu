@@ -64,11 +64,11 @@ const routes: Routes = [
       ),
     canLoad: [AuthGuard],
   },
-  {
+   {
     path: '**',
     redirectTo: '/landing',
     pathMatch: 'full',
-  },
+   },
 ];
 
 @NgModule({

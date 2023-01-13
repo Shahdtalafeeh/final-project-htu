@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormService } from 'src/app/core/services/form/form.service';
@@ -8,7 +8,7 @@ import { FormService } from 'src/app/core/services/form/form.service';
   templateUrl: './preview.component.html',
   styleUrls: ['./preview.component.css']
 })
-export class PreviewComponent implements OnInit {
+export class PreviewComponent implements OnInit, OnDestroy {
   id: string='';
   startupName: string='';
       logoImage:any
@@ -32,7 +32,7 @@ export class PreviewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-     this.activatedRoute.queryParams.subscribe((result)=>{
+    this.sub = this.activatedRoute.queryParams.subscribe((result)=>{
         if(result['id']){
           this.id=result['id']
         }
@@ -41,7 +41,7 @@ console.log(this.getStartupsById())
 
     }
     getStartupsById(){
-      this._formService.getById(this.id).subscribe((result:any)=>{
+     this.sub1 = this._formService.getById(this.id).subscribe((result:any)=>{
         this.startupName=result['startupName']
         this.logoImage=result['logoImage']
         this.city=result['city']
@@ -50,9 +50,18 @@ console.log(this.getStartupsById())
       this.numberOfEmployees=result['numberOfEmployees']
       this.sectors=result['sectors']
       this.websiteUrl=result['websiteUrl']
+      this.yearOfEstablishment=result['yearOfEstablishment']
 
       })
 
+
+    }
+    ngOnDestroy(): void {
+      if(this.sub && this.sub1){
+        this.sub.unsubscribe()
+        this.sub1.unsubscribe()
+
+      }
 
     }
 }

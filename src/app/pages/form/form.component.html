@@ -1,13 +1,14 @@
-<div class="col">
-  <div class="page-header">
-    <button mat-flat-button color="primary" style="height: 35px" (click)="back()">
-      Back
-    </button>
-  </div>
+
 
   <form [formGroup]="formGroup">
+    <div class="page-header">
+      <button mat-flat-button color="primary" style="height: 35px" (click)="back()">
+        Back
+      </button>
+    </div>
 
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <div class="form-header">
       <h2>Startup Request</h2>
 
       <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['logoImage'].value" />
@@ -22,7 +23,7 @@
     </div>
 
 
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>Startup Name</mat-label>
         <input
@@ -41,7 +42,7 @@
       </mat-form-field>
     </div>
 
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="fill">
         <mat-label>Select a sector</mat-label>
         <mat-select multiple formControlName="sectors">
@@ -68,7 +69,7 @@
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>number Of Employees</mat-label>
         <input
@@ -107,13 +108,13 @@
       }}</mat-error>
     </mat-form-field>
 
-
-  </form>
-
-     <div class="actions-section">
+    <div class="actions-section">
       <button mat-flat-button color="primary" (click)="onSubmitClicked()">
         Submit
       </button>
     </div>
-</div>
+  </form>
+
+
+
 

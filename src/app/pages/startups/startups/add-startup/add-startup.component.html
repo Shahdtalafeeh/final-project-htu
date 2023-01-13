@@ -1,17 +1,18 @@
-<div class="col">
-  <div class="page-header">
-    <button
-      mat-flat-button
-      color="primary"
-      style="height: 35px"
-      (click)="back()"
-      class="back-text"
-    >
-      Back
-    </button>
-  </div>
+
+
   <form [formGroup]="formGroup">
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="page-header">
+      <button
+        mat-flat-button
+        color="primary"
+        style="height: 35px"
+        (click)="back()"
+        class="back-text"
+      >
+        Back
+      </button>
+    </div>
+    <div class="form-header">
       <h2>Add Startup</h2>
 
       <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['logoImage'].value" />
@@ -26,7 +27,7 @@
     </div>
 
 
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>Startup Name</mat-label>
         <input
@@ -45,7 +46,7 @@
       </mat-form-field>
     </div>
 
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="fill">
         <mat-label>Select a sector</mat-label>
         <mat-select multiple formControlName="sectors">
@@ -72,7 +73,7 @@
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>number Of Employees</mat-label>
         <input
@@ -110,10 +111,11 @@
         getErrorMessage(formGroup.get("emailAddress"))
       }}</mat-error>
     </mat-form-field>
+    <div class="actions-section">
+      <button mat-flat-button color="primary" (click)="onAddClicked()">
+        <mat-icon>add</mat-icon>Add
+      </button>
+    </div>
   </form>
-  <div class="actions-section">
-    <button mat-flat-button color="primary" (click)="onAddClicked()">
-      <mat-icon>add</mat-icon>Add
-    </button>
-  </div>
-</div>
+
+

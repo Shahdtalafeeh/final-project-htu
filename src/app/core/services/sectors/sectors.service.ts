@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable, map } from 'rxjs';
 import { Sectors } from '../../interfaces/sectors.imterface';
-import { Startups } from '../../interfaces/startups.interface';
 
 @Injectable({
   providedIn: 'root'

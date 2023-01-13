@@ -1,7 +1,9 @@
-
 export interface Preview{
-  cols: number;
-  rows: number;
+  id:string,
+  sectors:any[],
+  startupName:string,
+    logoImage?:string
+
+
 
 }
-

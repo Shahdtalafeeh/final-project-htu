@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  min-height:100vh ;
-padding: 0px 6.7rem;}
+padding: 0px 0.7rem;}
 
   .filter-col{
   flex: 3;
@@ -21,8 +20,12 @@ padding: 0px 6.7rem;}
 h2{
   display: flex;
   justify-content: center;
-  font-size: 30px;
-  text-align: center;
+  font-size: 40px;
+    line-height: 42px;
+    color: var(--gray);
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 table{
   width: 100%;
@@ -32,3 +35,91 @@ table{
     position: relative;
     overflow: auto;
   }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 6px;
+  text-align: center;
+}
+
+  @media screen and (max-width: 960px) {
+
+
+     table {
+        border: 0;
+        vertical-align: middle;
+      }
+
+      table caption {
+        font-size: 1em;
+      }
+
+
+     table .mat-header-cell {
+
+        border: 10px solid;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      table tr{
+        border-bottom: 5px solid #ddd;
+        display: block;
+        height: 100%;
+      }
+      table tr:first-of-type{
+
+        margin-bottom: 5px;
+      }
+      table .mat-header-row{
+        border-bottom: none;
+      }
+
+
+      table td{
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 1em;
+        text-align: right;
+        font-weight: bold;
+        height:30px;
+        margin-bottom: 4%;
+      }
+     table td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: .85em;
+      }
+      table td:last-child {
+        border-bottom: 0;
+      }
+
+       td.mat-cell:first-of-type{
+        padding-left: 10px;
+      }
+      td.mat-cell:last-of-type{
+        padding-right: 0;
+      }
+      td.mat-cell{
+        padding: 0 10px;
+      }
+
+      .action-col > button{
+        display: none;
+
+
+        }
+        .action-add > button{
+          margin-top: 0;
+          float: right;
+          display: flex;
+        }
+        mat-paginator{
+          margin-bottom: 15px;
+        }
+
+    }

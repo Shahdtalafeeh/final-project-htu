@@ -12,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { FilterModule } from 'src/app/core/pipes/filter/filter.module';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
 import { AddSectorComponent } from './add-sector/add-sector.component';
 import { EditSectorComponent } from './edit-sector/edit-sector/edit-sector.component';
@@ -39,7 +38,6 @@ import { PreviewSectorComponent } from './preview-sector/preview-sector.componen
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    FilterModule,
     ColorPickerModule
   ]
 })

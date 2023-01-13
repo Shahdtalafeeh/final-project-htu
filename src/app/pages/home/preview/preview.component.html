@@ -1,23 +1,32 @@
+<video autoplay muted loop id="myVideo" oncanplay="this.play()">
+  <source
+    src="https://joy1.videvo.net/videvo_files/video/free/video0467/large_watermarked/_import_615163540096e1.68968110_preview.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support HTML5 video.
+</video>
+<div class="items">
 
-<div class="background">
   <div class="flex">
-  <div class="col">
+  <div class="col-1">
     <div class="name"> {{startupName}}</div><br>
 
     <div class="details">
-      {{'Founder Name:'+' '}}{{founderName}}<br>
-  {{'city:'+' '}}{{city}}<br>
-  {{'Email:'+' '}}{{emailAddress}}<br>
-  {{'sector:'+' '}}{{sectors}}<br>
-  {{'no. Of Employees:'+' '}}{{numberOfEmployees}}
+   <span>Founder Name: </span>{{founderName}}<br>
+  <span>city: </span>{{city}}<br>
+  <span>Email: </span>{{emailAddress}}<br>
+  <span>Sectors: </span>{{sectors}}<br>
+  <span>Employees: </span>{{numberOfEmployees}}<br>
+  <span>Website: </span><a [href]="websiteUrl" target="_blank" >{{websiteUrl}}</a><br>
+  <span>Year:</span>{{yearOfEstablishment}}
 </div>
   </div>
-  <div class="col" >
+  <div class="col">
   <img
   mat-card-image
   [src]="logoImage"
   alt="Photo of a Shiba Inu"
-  style="min-width: 200px; width: 100%;"
+
 />
 </div>
 </div>

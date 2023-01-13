@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -6,7 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
@@ -15,8 +15,9 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent extends AppComponentBase implements OnInit {
+export class SignupComponent extends AppComponentBase implements OnInit, OnDestroy {
   formGroup!: FormGroup;
+  sub!:Subscription
   constructor(
     private router: Router,
     private _usersService: UsersService,
@@ -25,6 +26,8 @@ export class SignupComponent extends AppComponentBase implements OnInit {
   ) {
     super(injector);
   }
+
+
 
   ngOnInit(): void {
     this.formGroup = this.formbuilder.group({
@@ -47,11 +50,10 @@ export class SignupComponent extends AppComponentBase implements OnInit {
     if (this.formGroup.invalid) {
       this.validatorFormGroup();
     } else {
-      this._usersService
+     this.sub = this._usersService
         .signup(this.email.value, this.password.value)
         .pipe(
           switchMap((user: any) => {
-            console.log(user);
             return this._usersService.createUser(
               user.user.uid,
               this.email.value,
@@ -60,8 +62,7 @@ export class SignupComponent extends AppComponentBase implements OnInit {
             );
           })
         )
-        .subscribe((result) => {
-          this.router.navigate(['/users/login']);
+        .subscribe(() => {
         });
     }
   }
@@ -95,4 +96,12 @@ export class SignupComponent extends AppComponentBase implements OnInit {
   get password() {
     return this.formGroup.controls['password'] as FormControl;
   }
+  ngOnDestroy(){
+    if(this.sub){
+      this.sub.unsubscribe();
+
+    }
+  }
+
+
 }

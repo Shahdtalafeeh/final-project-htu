@@ -1,15 +1,16 @@
 <div class="background">
   <div class="flex">
-  <div class="col">
+  <div class="col-1">
     <div class="name"> {{startupName}}</div><br>
 
     <div class="details">
-      {{'Founder Name:'+' '}}{{founderName}}<br>
-  {{'city:'+' '}}{{city}}<br>
-  {{'Email:'+' '}}{{emailAddress}}<br>
-  {{'sector:'+' '}}{{sectors}}<br>
-  {{'no. Of Employees:'+' '}}{{numberOfEmployees}}<br>
-  {{'website:'+' '}}{{websiteUrl}}
+      <span>Founder Name: </span>{{founderName}}<br>
+      <span>city: </span>{{city}}<br>
+      <span>Email: </span>{{emailAddress}}<br>
+      <span>Sectors: </span>{{sectors}}<br>
+      <span>Employees: </span>{{numberOfEmployees}}<br>
+      <span>Website: </span><a [href]="websiteUrl" target="_blank" >{{websiteUrl}}</a><br>
+      <span>Year:</span>{{yearOfEstablishment}}
 </div>
   </div>
   <div class="col" >

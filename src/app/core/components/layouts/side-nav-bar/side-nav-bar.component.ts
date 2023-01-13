@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { delay, Observable } from 'rxjs';
@@ -15,21 +21,20 @@ export class SideNavBarComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSidenav)
   sideNav!: MatSidenav;
   navServiceList: NavMenuDto = new NavMenuDto('', []);
-  ToolBarList: NavMenuDto= new NavMenuDto('',[])
+  ToolBarList: NavMenuDto = new NavMenuDto('', []);
   userInfo!: User;
-  sub:any;
-  sub1:any;
+  sub: any;
+  sub1: any;
   constructor(
     private breakpoint: BreakpointObserver,
     private _navService: NavService,
-    private _usersService: UsersService,
+    private _usersService: UsersService
   ) {}
 
-
   ngOnInit(): void {
-    this.navServiceList = this._navService.getNavMenu()
-    this.ToolBarList = this._navService.getToolBarMenu()
-   this.sub = this._usersService.userData$.subscribe((user) => {
+    this.navServiceList = this._navService.getNavMenu();
+    this.ToolBarList = this._navService.getToolBarMenu();
+    this.sub = this._usersService.userData$.subscribe((user) => {
       if (user.uId.length > 0) this.userInfo = user;
     });
   }
@@ -56,11 +61,8 @@ export class SideNavBarComponent implements OnInit, AfterViewInit, OnDestroy {
   onLoggedoutClicked() {
     this._usersService.logout();
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
-    this.sub1.unsubscribe()
+    this.sub1.unsubscribe();
   }
-
-
-
 }

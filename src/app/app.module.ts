@@ -17,6 +17,7 @@ import { StartupsModule } from './pages/startups/startups.module';
 
 
 
+
 @NgModule({
   declarations: [AppComponent
   ],
@@ -30,7 +31,8 @@ import { StartupsModule } from './pages/startups/startups.module';
     AngularFireAuthModule,
     AngularFireStorageModule,
     UsersModule,
-StartupsModule
+StartupsModule,
+
 
 
 

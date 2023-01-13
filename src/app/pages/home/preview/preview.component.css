@@ -1,15 +1,30 @@
-.background{
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+
+}
+.items{
 
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+
 }
 .flex{
   display: flex;
   flex-wrap: wrap;
 gap: 20px;
 max-width: 700px;
+border-style: solid;
+border-color: var(--white);
+padding: 2rem;
+margin: 1rem;
 }
 
 .col{
@@ -17,19 +32,41 @@ max-width: 700px;
    display: flex;
    flex-direction: column;
    flex: 1;
-   margin: 10px;
+   padding: 10px;
+  width: 100%;
+}
+
+.col-1{
+
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  padding: 10px;
+ width: 100%;
 }
 .name{
   font-size: 40px;
   font-weight: 450;
-  color: var(--dark-blue);
+  color: var(--white);
 
 
 }
 .details{
-  color: var(--dark-blue);
+  color: var(--white);
   font-size: 20px;
   font-weight: 0;
   margin: 10px;
+  width: 100%;
 
+}
+.details > span{
+  color: rgb(38, 84, 235);
+  font-weight: 450px;
+}
+a{
+  color: var(--white);
+}
+img{
+  min-width: 200px;
+  width: 100%;
 }

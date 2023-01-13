@@ -1,10 +1,9 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { finalize } from 'rxjs';
+import {  Subscription } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
-import { StartupsService } from 'src/app/core/services/startups/startups.service';
 import { UploadService } from 'src/app/core/services/upload/upload.service';
 
 @Component({
@@ -12,13 +11,16 @@ import { UploadService } from 'src/app/core/services/upload/upload.service';
   templateUrl: './edit-sector.component.html',
   styleUrls: ['./edit-sector.component.css'],
 })
-export class EditSectorComponent extends AppComponentBase implements OnInit {
+export class EditSectorComponent extends AppComponentBase implements OnInit, OnDestroy {
   formGroup!: FormGroup;
   id: string = '';
   loading = true;
   imgSrc: any;
   color: string = '#c2185b';
-
+  sub!: Subscription;
+  sub1!:Subscription;
+  sub2!:Subscription
+  sub3!:Subscription
   constructor(
     private formBuilder: FormBuilder,
     injector: Injector,
@@ -37,7 +39,7 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((result) => {
+  this.sub = this.activatedRoute.queryParams.subscribe((result) => {
       if (result['id']) {
         this.id = result['id'];
         this.getSectorById();
@@ -46,7 +48,7 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
 
   }
   getSectorById() {
-    this._sectorsService.getById(this.id).subscribe((result: any) => {
+   this.sub1 = this._sectorsService.getById(this.id).subscribe((result: any) => {
       this.formGroup = this.formBuilder.group({
         sectors: result['sectors'],
         sectorLogo: result['sectorLogo'],
@@ -66,7 +68,7 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
     }
   }
   upload() {
-    this._uploadService
+   this.sub2 = this._uploadService
       .upload(this.formGroup.controls['sectorLogo'].value)
       .subscribe((file) => {
         if (file?.metadata) {
@@ -75,7 +77,7 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
       });
   }
   getDownloadURL() {
-    this._uploadService.getDownloadURL().subscribe((url) => {
+   this.sub3 = this._uploadService.getDownloadURL().subscribe((url) => {
       console.log();
       this.formGroup.controls['sectorLogo'].setValue(url);
       this.updateSectors();
@@ -107,5 +109,8 @@ export class EditSectorComponent extends AppComponentBase implements OnInit {
   onChangeColor(color: string): void {
     this.color = color;
     this.formGroup.controls['designColor'].patchValue(color);
+  }
+  ngOnDestroy(){
+
   }
 }

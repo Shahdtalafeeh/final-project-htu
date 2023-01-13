@@ -2,7 +2,7 @@
   <mat-sidenav #snav>
     <mat-list>
       <div *ngFor="let item of navServiceList.children">
-        <div *ngIf="item.children.length === 0; else hasChildren">
+        <div *ngIf="item.children.length === 0;">
           <a
             [routerLink]="[item.route]"
             (click)="onItemClicked()"
@@ -19,36 +19,6 @@
           </a>
         </div>
 
-        <ng-template #hasChildren>
-          <mat-list-item
-            *ngIf="
-              userInfo &&
-              (userInfo.roll === item.roll || item.roll.length === 0)
-            "
-          >
-            <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-            <div mat-line>{{ item.displayName }}</div>
-          </mat-list-item>
-          <mat-list>
-            <div *ngFor="let childItem of item.children">
-              <a
-                [routerLink]="[childItem.route]"
-                (click)="onItemClicked()"
-                *ngIf="
-                  userInfo &&
-                  (userInfo.roll === childItem.roll ||
-                    childItem.roll.length === 0)
-                "
-                class="text"
-              >
-                <mat-list-item class="child-items">
-                  <mat-icon mat-list-icon>{{ childItem.icon }}</mat-icon>
-                  <div mat-line>{{ childItem.displayName }}</div>
-                </mat-list-item>
-              </a>
-            </div>
-          </mat-list>
-        </ng-template>
       </div>
     </mat-list>
     <button mat-button (click)="onLoggedoutClicked()" class="logout">

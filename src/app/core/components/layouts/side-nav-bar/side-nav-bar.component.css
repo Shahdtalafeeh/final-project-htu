@@ -32,7 +32,6 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-   height: 100vh;
 }
 mat-sidenav-content {
   background-image: url(https://thumbs.dreamstime.com/b/abstract-modern-flame-background-colorful-dynamic-flames-unique-easy-editing-color-change-other-manipulation-included-91502901.jpg);
@@ -42,7 +41,7 @@ mat-sidenav-content {
 
 }
 .mat-drawer-content{
-  height: auto;
+  height: 100vh;
 }
  @media screen and (max-width: 960px) {
   main{
