@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
-import { StartupsService } from 'src/app/core/services/startups/startups.service';
 
 @Component({
   selector: 'app-preview-sector',

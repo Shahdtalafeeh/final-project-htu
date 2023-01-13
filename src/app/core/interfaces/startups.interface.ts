@@ -10,8 +10,4 @@ export interface Startups{
     yearOfEstablishment:number,
     websiteUrl:string,
     emailAddress:string,
-    // sectorLogo?:string,
-    // designColor?:string,
-    // parentCategoryName?:string
-
   }

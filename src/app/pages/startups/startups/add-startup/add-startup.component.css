@@ -1,13 +1,10 @@
-.col {
+form {
+  width: 100%;
   background-color: var(--white);
   max-width: 560px;
   padding: 10px;
   box-shadow: 0px 8px 9px 7px #8888;
   margin: auto;
-
-}
-form {
-  width: 100%;
 }
 
 .logo {
@@ -33,4 +30,37 @@ mat-form-field {
 }
 img {
   width: 100px;
+}
+.fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.form-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h2{
+  display: flex;
+  justify-content: center;
+  font-size: 33px;
+    line-height: 42px;
+    color: var(--gray);
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 960px){
+  .fields {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
 }

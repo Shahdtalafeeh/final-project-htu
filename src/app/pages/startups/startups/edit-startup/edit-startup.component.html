@@ -12,7 +12,7 @@
 
   </div>
   <form [formGroup]="formGroup" >
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="form-header">
       <h2>Update Startup</h2>
 
       <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['logoImage'].value" />
@@ -27,7 +27,7 @@
     </div>
 
 
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>Startup Name</mat-label>
         <input
@@ -46,7 +46,7 @@
       </mat-form-field>
     </div>
 
-    <div style="display: flex; flex-direction: row; gap: 10px" >
+    <div class="fields">
       <div >
         <mat-form-field appearance="fill">
           <mat-label>Select a sector</mat-label>
@@ -82,7 +82,7 @@
         }}</mat-error>
       </mat-form-field>
     </div>
-    <div style="display: flex; flex-direction: row; gap: 10px">
+    <div class="fields">
       <mat-form-field appearance="outline">
         <mat-label>number Of Employees</mat-label>
         <input

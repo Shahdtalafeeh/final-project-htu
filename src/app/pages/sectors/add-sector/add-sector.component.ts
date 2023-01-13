@@ -1,7 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { UploadService } from 'src/app/core/services/upload/upload.service';

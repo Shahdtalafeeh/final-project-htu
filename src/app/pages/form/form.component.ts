@@ -1,17 +1,12 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {
   FormGroup,
   FormBuilder,
   Validators,
-  FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { AppComponentBase } from 'src/app/core/base/app-component-base';
 import { Startups } from 'src/app/core/interfaces/startups.interface';
-import { FormService } from 'src/app/core/services/form/form.service';
 import { SectorsService } from 'src/app/core/services/sectors/sectors.service';
 import { UploadService } from 'src/app/core/services/upload/upload.service';
 
@@ -22,23 +17,21 @@ import { UploadService } from 'src/app/core/services/upload/upload.service';
 })
 export class FormComponent
   extends AppComponentBase
-  implements OnInit
+  implements OnInit, OnDestroy
 {
   formGroup!: FormGroup;
   dropList: Startups[] = [];
   imgSrc: any ;
   selectedImage: any = null;
-  sub: any;
-  sub1: any;
-  sub2: any;
+  sub!: Subscription;
+  sub1!: Subscription;
+  sub2!: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     injector: Injector,
-    private _formService: FormService,
     private _sectorservice: SectorsService,
     private _uploadService: UploadService,
-    private route: Router
   ) {
     super(injector);
     this.formGroup = this.formBuilder.group({
@@ -79,14 +72,14 @@ export class FormComponent
   }
 
   getDownloadURL() {
-    this._uploadService.getDownloadURL().subscribe((url) => {
+    this.sub1 = this._uploadService.getDownloadURL().subscribe((url) => {
       this.formGroup.controls['logoImage'].setValue(url);
       this.createStartup();
     });
   }
 
   createStartup() {
-    this.sub1 = this._formService
+    this.formService
       .create({
         startupName: this.formGroup.controls['startupName'].value,
         logoImage: this.formGroup.controls['logoImage'].value,
@@ -138,9 +131,12 @@ export class FormComponent
   }
 
 
-  // ngOnDestroy() {
-  //   this.sub.unsubscribe();
-  //   this.sub1.unsubscribe();
-  //   this.sub2.unsubscribe();
-  // }
+  ngOnDestroy() {
+    if(this.sub && this.sub1 && this.sub2){
+      this.sub.unsubscribe();
+      this.sub1.unsubscribe();
+      this.sub2.unsubscribe();
+    }
+
+  }
 }

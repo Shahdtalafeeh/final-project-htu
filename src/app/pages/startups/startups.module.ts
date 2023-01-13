@@ -15,7 +15,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
-import { FilterModule } from 'src/app/core/pipes/filter/filter.module';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import { StartupsRoutingModule } from './startups-routing.module';
@@ -31,7 +30,6 @@ import { StartupsRoutingModule } from './startups-routing.module';
   MatPaginatorModule,
   FormsModule,
   ReactiveFormsModule,
-  FilterModule,
   MatSnackBarModule,
   MatSelectModule,]
 

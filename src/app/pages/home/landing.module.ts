@@ -11,17 +11,19 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { HeaderModule } from 'src/app/core/components/header/header.module';
 import { LandingComponent } from './landing.component';
 import { PreviewComponent } from './preview/preview.component';
+import { FooterModule } from 'src/app/core/components/footer/footer.module';
 
 const MatImports = [
   MatCardModule,
   MatButtonModule,
   MatIconModule,
   RouterModule,
-
   MatRippleModule,
   MatListModule,
   MatTooltipModule,
   HeaderModule,
+  FooterModule,
+
 ];
 
 @NgModule({

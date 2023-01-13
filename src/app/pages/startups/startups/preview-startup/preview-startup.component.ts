@@ -50,6 +50,8 @@ export class PreviewStartupComponent implements OnInit, OnDestroy {
         this.founderName=result['founderName']
       this.numberOfEmployees=result['numberOfEmployees']
       this.sectors=result['sectors']
+      this.websiteUrl = result['websiteUrl']
+      this.yearOfEstablishment = result['yearOfEstablishment']
 
       })
 
