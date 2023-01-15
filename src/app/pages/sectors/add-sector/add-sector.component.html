@@ -27,18 +27,19 @@
     <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['sectorLogo'].value" />
     <label for="file" class="logo"> Logo </label>
 
-    <div class="flex-row">
-      <mat-label>Pick A Design Color!</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Design Color</mat-label>
+
       <input
         matInput
         [(colorPicker)]="color"
-        class="color"
+        id="color"
         (colorPickerChange)="onChangeColor($event)"
-        formControlName="designColor"
         [style.background]="color"
-      />
-    </div>
+        formControlName="designColor"
 
+      />
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Parent Category Name</mat-label>

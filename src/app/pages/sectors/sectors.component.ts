@@ -2,7 +2,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import {
   AfterViewInit,
   Component,
-  Injector,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -20,10 +19,7 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   templateUrl: './sectors.component.html',
   styleUrls: ['./sectors.component.css'],
 })
-export class SectorsComponent
-
-  implements OnInit, AfterViewInit, OnDestroy
-{
+export class SectorsComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoggedIn$!: Observable<boolean>;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -36,15 +32,16 @@ export class SectorsComponent
   dataSource = new MatTableDataSource<Sectors>([]);
   selection = new SelectionModel<any>(true, []);
   value: any;
-  sub!:Subscription;
-
+  sub!: Subscription;
+  loading = true;
+  filterData = {
+    sectors: '',
+  };
   constructor(
     private router: Router,
     private _sectorservice: SectorsService,
     private _usersService: UsersService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getAllsectors();
@@ -54,12 +51,33 @@ export class SectorsComponent
     this.sub = this._sectorservice.getAll().subscribe((result) => {
       this.dataSource = new MatTableDataSource(result);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = this.customFilterPredicate();
+
       this.dataSource._updateChangeSubscription();
+      this.loading = false;
     });
+  }
+  customFilterPredicate() {
+    const myFilterPredicate = (data: any, filter: any) => {
+      const searchString = JSON.parse(filter);
+      let sectorFilter = null;
+      let finalDataFilter = true;
+      if (searchString.sectors !== null) {
+        sectorFilter = data.sectors
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(searchString.sectors.toLowerCase());
+        finalDataFilter = finalDataFilter && sectorFilter;
+      }
+
+      return finalDataFilter;
+    };
+    return myFilterPredicate;
   }
 
   onDeleteRowClicked(id: string) {
-   this._sectorservice.delete(id);
+    this._sectorservice.delete(id);
   }
   onEditRowClicked(id: string) {
     this.router.navigate(['/sectors/edit-sector'], {
@@ -95,18 +113,19 @@ export class SectorsComponent
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (filterValue !== null && filterValue !== '') {
+      this.filterData.sectors = filterValue.trim().toLowerCase();
+      this.dataSource.filter = JSON.stringify(this.filterData);
+    } else {
+      this.filterData.sectors = '';
+      this.dataSource.filter = JSON.stringify(this.filterData);
     }
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnDestroy(){
-    this.sub.unsubscribe()
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
-
-
 }

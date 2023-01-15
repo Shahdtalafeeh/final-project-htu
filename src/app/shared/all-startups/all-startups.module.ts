@@ -5,6 +5,7 @@ import { AllStartupsComponent } from './all-startups.component';
 import { MatCardModule } from '@angular/material/card';
 import { PreviewAllstartupsComponent } from './preview-allstartups/preview-allstartups.component';
 import { AllStartupsRoutingModule } from './all-startups-routing.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AllStartupsRoutingModule } from './all-startups-routing.module';
   imports: [
     CommonModule,
     MatCardModule,
-    AllStartupsRoutingModule
+    AllStartupsRoutingModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AllStartupsModule { }

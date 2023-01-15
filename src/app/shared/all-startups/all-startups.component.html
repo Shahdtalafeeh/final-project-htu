@@ -1,9 +1,12 @@
-<div class="main">
+<div style="display: flex; justify-content: center" *ngIf="loading">
+  <mat-spinner diameter="50" color="primary"></mat-spinner>
+</div>
+<div class="main" *ngIf="!loading">
   <h2>All Start Ups...</h2>
   <div class="flex-row">
-    <mat-card *ngFor="let sector of sectors">
+    <mat-card *ngFor="let sector of sectors" [style.background-color]="sector.designColor">
       <mat-card-header class="title">
-        <mat-card-title [style.color]="sector.designColor">{{ sector.sectors }}</mat-card-title>
+        <mat-card-title >{{ sector.sectors }}</mat-card-title>
       </mat-card-header>
       <div class="flex-row">
         <div *ngFor="let startup of startups">

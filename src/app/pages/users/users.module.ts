@@ -12,8 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-const MatImports=[MatFormFieldModule,MatInputModule,FormsModule, ReactiveFormsModule,MatButtonModule,MatRadioModule]
+const MatImports=[MatFormFieldModule,MatInputModule,FormsModule, ReactiveFormsModule,MatButtonModule,MatRadioModule, MatProgressSpinnerModule]
 
 
 @NgModule({

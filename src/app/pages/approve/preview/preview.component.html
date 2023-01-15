@@ -1,4 +1,7 @@
-<div class="background">
+<div style="display: flex; justify-content: center" *ngIf="loading">
+  <mat-spinner diameter="50" color="primary"></mat-spinner>
+</div>
+<div class="background" *ngIf="!loading">
   <div class="flex">
   <div class="col-1">
     <div class="name"> {{startupName}}</div><br>

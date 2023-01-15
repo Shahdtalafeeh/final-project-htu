@@ -11,7 +11,7 @@ import { UsersService } from 'src/app/core/services/users/users.service';
 export class LoginComponent implements  OnInit {
 
   formGroup!: FormGroup;
-
+loading = true
   constructor(
     private router: Router,
     private _usersService: UsersService,
@@ -40,6 +40,8 @@ export class LoginComponent implements  OnInit {
     }else{
       this._usersService.login(this.email.value, this.password.value);
        this.router.navigate(['/all-startups'])
+       this.loading = false
+
     }
 
   }

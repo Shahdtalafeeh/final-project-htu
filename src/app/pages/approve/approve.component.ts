@@ -28,8 +28,10 @@ export class ApproveComponent
 {
   isLoggedIn$!: Observable<boolean>;
   sub!: Subscription;
-
-
+loading = true
+filterData = {
+  startupName: '',
+};
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   displayedColumns: string[] = [
@@ -55,16 +57,37 @@ export class ApproveComponent
 
   ngOnInit(): void {
     this.getNewData();
-
     this.isLoggedIn$ = this._usersService.isLoggedIn$;
+    this.dataSource.filterPredicate = this.customFilterPredicate();
+    this.dataSource._updateChangeSubscription();
   }
   getNewData() {
     this.sub = this._formService.getAll().subscribe((result: any) => {
       this.dataSource = new MatTableDataSource(Object.values(result));
+      this.dataSource.filterPredicate = this.customFilterPredicate();
+
       this.dataSource._updateChangeSubscription();
+      this.loading = false
     });
   }
+  customFilterPredicate() {
+    const myFilterPredicate = (data: any, filter: any) => {
+      const searchString = JSON.parse(filter);
+      let startupFilter = null;
+      let finalDataFilter = true;
+      if (searchString.startupName !== null) {
+        startupFilter = data.startupName
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(searchString.startupName.toLowerCase());
+        finalDataFilter = finalDataFilter && startupFilter;
+      }
 
+      return finalDataFilter;
+    };
+    return myFilterPredicate;
+  }
   onDeleteRowClicked(id: string) {
    this._formService.delete(id);
   }
@@ -93,10 +116,13 @@ export class ApproveComponent
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (filterValue !== null && filterValue !== '') {
+      this.filterData.startupName = filterValue.trim().toLowerCase();
+      this.dataSource.filter = JSON.stringify(this.filterData);
+    } else {
+      this.filterData.startupName = '';
+      this.dataSource.filter = JSON.stringify(this.filterData);
     }
   }
   ngAfterViewInit() {

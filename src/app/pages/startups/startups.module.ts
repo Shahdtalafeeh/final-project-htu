@@ -18,6 +18,9 @@ import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import { StartupsRoutingModule } from './startups-routing.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+
  const MatImports=[ MatFormFieldModule,
   MatInputModule,
   MatFormFieldModule,
@@ -31,7 +34,9 @@ import { StartupsRoutingModule } from './startups-routing.module';
   FormsModule,
   ReactiveFormsModule,
   MatSnackBarModule,
-  MatSelectModule,]
+  MatSelectModule,
+  MatProgressSpinnerModule,
+  MatCardModule]
 
 @NgModule({
   declarations: [

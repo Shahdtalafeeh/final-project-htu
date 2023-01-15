@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [LayoutComponent, SideNavBarComponent
   ],
@@ -21,7 +23,8 @@ import { MatListModule } from '@angular/material/list';
     RouterModule,
     MatButtonModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
 
   ],
   exports: [LayoutComponent],

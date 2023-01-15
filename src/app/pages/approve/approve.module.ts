@@ -14,6 +14,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { SplitTextModule } from 'src/app/core/pipes/split-text/split-text.module';
 import { PreviewComponent } from './preview/preview.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+
 const MatImports = [
   MatTableModule,
   MatPaginatorModule,
@@ -24,7 +27,9 @@ const MatImports = [
   MatButtonModule,
   SplitTextModule,
   MatRippleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule,
+  MatCardModule
 
 ];
 

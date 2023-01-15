@@ -1,15 +1,21 @@
-<div class="background">
-  <div class="flex">
-    <div class="col-1">
-      <div class="name" [style.color]="designColor">{{ sectors }}</div>
-      <br />
+<div style="display: flex; justify-content: center" *ngIf="loading">
+  <mat-spinner diameter="20" color="primary"></mat-spinner>
+</div>
+<div *ngIf="!loading">
+  <div class="background">
+    <div class="flex">
+      <div class="col-1">
+        <div class="name" [style.color]="designColor">{{ sectors }}</div>
+        <br />
 
-      <div class="details">
-       <span>Parent Category Name : </span>{{ parentCategoryName }}<br />
+        <div class="details">
+         <span>Parent Category Name : </span>{{ parentCategoryName }}<br />
+        </div>
       </div>
-    </div>
-    <div class="col">
-      <img [src]="sectorLogo" width="350px" height="250px" />
+      <div class="col">
+        <img [src]="sectorLogo" width="350px" height="250px" />
+      </div>
     </div>
   </div>
 </div>
+

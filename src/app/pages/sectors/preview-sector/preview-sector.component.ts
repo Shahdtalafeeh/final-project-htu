@@ -17,7 +17,7 @@ export class PreviewSectorComponent implements OnInit, OnDestroy {
 
   sub!: Subscription;
   sub1!: Subscription;
-
+loading = true
   constructor(
     private _sectorsService: SectorsService,
     private activatedRoute: ActivatedRoute
@@ -40,6 +40,7 @@ export class PreviewSectorComponent implements OnInit, OnDestroy {
         this.sectorLogo = result['sectorLogo'];
         this.designColor = result['designColor'];
         this.parentCategoryName = result['parentCategoryName'];
+        this.loading = false
       });
   }
   ngOnDestroy() {

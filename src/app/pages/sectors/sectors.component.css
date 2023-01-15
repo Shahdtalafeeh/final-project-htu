@@ -4,6 +4,7 @@
   justify-content: center;
   width: 100%;
   padding:0px 0.7rem;
+  gap: 6px;
 
 }
 
@@ -21,8 +22,8 @@ h2{
   justify-content: center;
   font-size: 33px;
     line-height: 42px;
-    color: var(--gray);
-    font-weight: 300;
+    color: var(--blue);
+    font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
 
@@ -32,11 +33,25 @@ width: 100%;
 
 
 }
-.flex-row{
-  display: flex;
+.container{
+  border-style: solid;
+  border-color: var(--blue);
+  border-width: 2.5px;
+  border-radius: 4px;
+}
+
+.row{
+   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  border-style: solid;
+  border-color: var(--blue);
+  border-width: 2.5px;
+
+}
+th.mat-header-cell{
+  color: #6592b8;
 
 }

@@ -40,9 +40,11 @@ mat-form-field {
 img {
   width: 100px;
 }
-.color{
-  width: 20px;
+#color{
+  width: 17px;
   cursor: pointer;
+  margin-inline-start: 158px;
+
 
 }
 h2{

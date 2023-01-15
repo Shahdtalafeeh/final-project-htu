@@ -22,7 +22,7 @@ export class PreviewAllstartupsComponent implements OnInit, OnDestroy {
 
   sub!: Subscription;
   sub1!: Subscription;
-
+  loading = true
   constructor(
     private _startupsService: StartupsService,
     private activatedRoute: ActivatedRoute
@@ -50,6 +50,7 @@ export class PreviewAllstartupsComponent implements OnInit, OnDestroy {
         this.sectors = result['sectors'];
         this.websiteUrl = result['websiteUrl'];
         this.yearOfEstablishment= result['yearOfEstablishment']
+        this.loading = false
       });
   }
   ngOnDestroy() {

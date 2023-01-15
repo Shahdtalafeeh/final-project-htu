@@ -22,7 +22,7 @@ sectors: Sectors[]=[]
 startups:Preview[]=[]
   sub!: Subscription;
   sub1!: Subscription;
-
+loading = true
   constructor(private _userService: UsersService,  private _startupservice: StartupsService,
     private route: Router, private _sectorservice: SectorsService) {
 
@@ -45,6 +45,7 @@ this.getAllsectors()
 getAllstart() {
  this.sub = this._startupservice.getAll().subscribe((result) => {
     this.startups = result;
+    this.loading = false
 
   });
 }

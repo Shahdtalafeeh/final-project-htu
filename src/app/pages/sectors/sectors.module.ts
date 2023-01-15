@@ -17,6 +17,8 @@ import { AddSectorComponent } from './add-sector/add-sector.component';
 import { EditSectorComponent } from './edit-sector/edit-sector/edit-sector.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { PreviewSectorComponent } from './preview-sector/preview-sector.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { PreviewSectorComponent } from './preview-sector/preview-sector.componen
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ]
 })
 export class SectorsModule { }
