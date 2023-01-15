@@ -22,7 +22,7 @@ export class PreviewComponent implements OnInit, OnDestroy {
 
      sub!:Subscription;
      sub1!:Subscription;
-
+loading = true
 
     constructor(
 
@@ -51,6 +51,7 @@ console.log(this.getStartupsById())
       this.sectors=result['sectors']
       this.websiteUrl=result['websiteUrl']
       this.yearOfEstablishment=result['yearOfEstablishment']
+      this.loading = false
 
       })
 

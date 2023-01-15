@@ -30,8 +30,8 @@
     <label for="file" class="logo"> Logo </label>
 
 
-      <div class="flex-row">
-        <mat-label>Pick A Design Color!</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Design Color</mat-label>
         <input
           matInput
           [(colorPicker)]="color"
@@ -39,9 +39,8 @@
           (colorPickerChange)="onChangeColor($event)"
           formControlName="designColor"
           [style.background]="formGroup.controls['designColor'].value"
-
         />
-      </div>
+      </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Parent Category Name</mat-label>

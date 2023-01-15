@@ -18,6 +18,7 @@ export class AllStartupsComponent implements OnInit, OnDestroy {
   sub1!: Subscription;
   sectors: Sectors[] = [];
   startups: Preview[] = [];
+  loading = true
   constructor(
     private _startupservice: StartupsService,
     private route: Router,
@@ -32,6 +33,7 @@ export class AllStartupsComponent implements OnInit, OnDestroy {
   getAllstart() {
     this.sub = this._startupservice.getAll().subscribe((result) => {
       this.startups = result;
+      this.loading = false
     });
   }
   onCardClicked(id: string) {
@@ -44,6 +46,8 @@ export class AllStartupsComponent implements OnInit, OnDestroy {
   getAllsectors() {
     this.sub1 = this._sectorservice.getAll().subscribe((result) => {
       this.sectors = result;
+      this.loading = false
+
     });
   }
   ngOnDestroy() {

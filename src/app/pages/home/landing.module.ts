@@ -12,6 +12,7 @@ import { HeaderModule } from 'src/app/core/components/header/header.module';
 import { LandingComponent } from './landing.component';
 import { PreviewComponent } from './preview/preview.component';
 import { FooterModule } from 'src/app/core/components/footer/footer.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const MatImports = [
   MatCardModule,
@@ -23,6 +24,7 @@ const MatImports = [
   MatTooltipModule,
   HeaderModule,
   FooterModule,
+  MatProgressSpinnerModule
 
 ];
 

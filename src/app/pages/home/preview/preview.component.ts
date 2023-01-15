@@ -21,7 +21,7 @@ export class PreviewComponent implements OnInit, OnDestroy {
 
   sub: any;
   sub1: any;
-
+loading = true
   constructor(
     private _startupsService: StartupsService,
     private activatedRoute: ActivatedRoute
@@ -49,6 +49,7 @@ export class PreviewComponent implements OnInit, OnDestroy {
         this.sectors = result['sectors'];
         this.websiteUrl = result['websiteUrl'];
         this.yearOfEstablishment = result['yearOfEstablishment'];
+        this.loading = false
       });
   }
   ngOnDestroy() {

@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-padding: 0px 0.7rem;}
+padding: 0px 0.7rem;
+gap: 6px;
+}
 
   .filter-col{
   flex: 3;
@@ -20,12 +22,13 @@ padding: 0px 0.7rem;}
 h2{
   display: flex;
   justify-content: center;
-  font-size: 40px;
+  font-size: 33px;
     line-height: 42px;
-    color: var(--gray);
-    font-weight: 300;
+    color: var(--blue);
+    font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-bottom: 10px ;
 }
 table{
   width: 100%;
@@ -34,12 +37,29 @@ table{
   .container{
     position: relative;
     overflow: auto;
+    border-style: solid;
+    border-color: var(--blue);
+    border-width: 2.5px;
+    border-radius: 4px;
   }
   th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     padding: 6px;
   text-align: center;
 }
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-style: solid;
+  border-color: var(--blue);
+  border-width: 2.5px;
+}
+th.mat-header-cell{
+  color: #6592b8;
 
+}
   @media screen and (max-width: 960px) {
 
 

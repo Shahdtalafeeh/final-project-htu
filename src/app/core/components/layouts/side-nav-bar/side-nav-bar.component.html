@@ -1,6 +1,11 @@
+
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #snav>
-    <mat-list>
+
+  <mat-sidenav #snav >
+    <div style="display: flex; justify-content: center" *ngIf="loading">
+      <mat-spinner diameter="50" color="primary"></mat-spinner>
+    </div>
+    <mat-list *ngIf="!loading">
       <div *ngFor="let item of navServiceList.children">
         <div *ngIf="item.children.length === 0;">
           <a
@@ -32,7 +37,7 @@
       </button>
     </div>
 
-    <main class="content">
+    <main>
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>

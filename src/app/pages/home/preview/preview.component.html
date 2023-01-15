@@ -1,13 +1,15 @@
 <video autoplay muted loop id="myVideo" oncanplay="this.play()">
   <source
-    src="https://joy1.videvo.net/videvo_files/video/free/video0467/large_watermarked/_import_615163540096e1.68968110_preview.mp4"
+    src="https://firebasestorage.googleapis.com/v0/b/trial-d0a11.appspot.com/o/video%2F_import_615163540096e1.68968110_preview%20(1).mp4?alt=media&token=3fdd0232-957f-4271-abba-9c682479d8c3"
     type="video/mp4"
   />
   Your browser does not support HTML5 video.
 </video>
 <div class="items">
-
-  <div class="flex">
+  <div style="display: flex; justify-content: center" *ngIf="loading">
+    <mat-spinner diameter="50" color="primary"></mat-spinner>
+  </div>
+  <div class="flex" *ngIf="!loading">
   <div class="col-1">
     <div class="name"> {{startupName}}</div><br>
 

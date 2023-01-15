@@ -34,9 +34,9 @@ main{
   align-items: center;
 }
 mat-sidenav-content {
-  background-image: url(https://thumbs.dreamstime.com/b/abstract-modern-flame-background-colorful-dynamic-flames-unique-easy-editing-color-change-other-manipulation-included-91502901.jpg);
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/trial-d0a11.appspot.com/o/images%2Fabstract-modern-flame-background-colorful-dynamic-flames-unique-easy-editing-color-change-other-manipulation-included-91502901.jpg?alt=media&token=c764a150-6335-40a5-879c-0bd517437b42);
   background-size: cover;
-  background-attachment: local;
+  background-attachment: fixed;
   background-position: center;
 
 }

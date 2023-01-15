@@ -1,3 +1,10 @@
+h2{
+  color: #696f6f;
+  margin-bottom: 20px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  line-height: 24px;
+}
 .tab{
   min-height: 100vh;
   display: flex;
@@ -10,7 +17,7 @@
     min-width: 300px;
     max-width: 900px;
     min-height: 300px;
-    box-shadow: 5px 10px 12px 10px #8888;
+    box-shadow: 5px 10px 12px #888888;;
     background-color: var(--white);
 
 

@@ -25,6 +25,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit, OnDestroy {
   userInfo!: User;
   sub: any;
   sub1: any;
+  loading = true
   constructor(
     private breakpoint: BreakpointObserver,
     private _navService: NavService,
@@ -35,7 +36,10 @@ export class SideNavBarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.navServiceList = this._navService.getNavMenu();
     this.ToolBarList = this._navService.getToolBarMenu();
     this.sub = this._usersService.userData$.subscribe((user) => {
-      if (user.uId.length > 0) this.userInfo = user;
+      if (user.uId.length > 0){
+        this.userInfo = user;
+      this.loading = false
+    }
     });
   }
   ngAfterViewInit(): void {
@@ -60,6 +64,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onLoggedoutClicked() {
     this._usersService.logout();
+
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

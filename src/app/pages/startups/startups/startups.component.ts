@@ -47,6 +47,8 @@ export class StartupsComponent
     sectors: '',
     startupName: '',
   };
+  loading = true;
+
   constructor(
     private router: Router,
     injector: Injector,
@@ -72,6 +74,8 @@ export class StartupsComponent
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.customFilterPredicate();
       this.dataSource._updateChangeSubscription();
+      this.loading = false;
+
     });
   }
   getAllsectors() {
