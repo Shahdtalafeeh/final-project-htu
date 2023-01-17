@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutsModule } from './core/components/layouts/layouts.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
@@ -13,29 +12,21 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersModule } from './pages/users/users.module';
 import { StartupsModule } from './pages/startups/startups.module';
-
-
-
-
+import { SideNavBarModule } from './core/components/side-nav-bar/side-nav-bar.module';
 
 @NgModule({
-  declarations: [AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
     UsersModule,
-StartupsModule,
-
-
-
-
+    StartupsModule,
+    SideNavBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

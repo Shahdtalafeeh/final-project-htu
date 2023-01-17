@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import { delay, Observable } from 'rxjs';
+import { delay } from 'rxjs';
 import { NavService } from 'src/app/core/services/nav/nav.service';
 import { NavMenuDto } from 'src/app/core/dto/nav-menu';
 import { UsersService } from 'src/app/core/services/users/users.service';
