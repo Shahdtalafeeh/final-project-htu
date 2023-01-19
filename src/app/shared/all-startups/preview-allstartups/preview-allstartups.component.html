@@ -1,29 +1,26 @@
 <div style="display: flex; justify-content: center" *ngIf="loading">
   <mat-spinner diameter="50" color="primary"></mat-spinner>
 </div>
-<div class="background" *ngIf="!loading">
-  <div class="flex">
-  <div class="col-1">
-    <div class="name"> {{startupName}}</div><br>
+<!-- <div class="background" > -->
+  <div class="flex" *ngIf="!loading">
+    <div class="col-1">
+      <div class="name">{{ startupName }}</div>
+      <br />
 
-    <div class="details">
-      <span>Founder Name: </span>{{founderName}}<br>
-      <span>city: </span>{{city}}<br>
-      <span>Email: </span>{{emailAddress}}<br>
-      <span>Sectors: </span>{{sectors}}<br>
-      <span>Employees: </span>{{numberOfEmployees}}<br>
-      <span>Website: </span><a [href]="websiteUrl" target="_blank" >{{websiteUrl}}</a><br>
-      <span>Year:</span>{{yearOfEstablishment}}
-</div>
+      <div class="details">
+        <span>Founder Name: </span>{{ founderName }}<br />
+        <span>city: </span>{{ city }}<br />
+        <span>Email: </span>{{ emailAddress }}<br />
+        <span>Sectors: </span>{{ sectors }}<br />
+        <span>Employees: </span>{{ numberOfEmployees }}<br />
+        <span>Website: </span
+        ><a [href]="websiteUrl" target="_blank">{{ websiteUrl }}</a
+        ><br />
+        <span>Year:</span>{{ yearOfEstablishment }}
+      </div>
+    </div>
+    <div class="col">
+      <img [src]="logoImage" width="350px" height="250px" />
+    </div>
   </div>
-  <div class="col" >
-
-
-      <img [src]="logoImage" width="350px" height="250px">
-
-
-
-</div>
-</div>
-
-</div>
+<!-- </div> -->

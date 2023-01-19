@@ -62,9 +62,7 @@ th.mat-header-cell{
 
 
 @media screen and (max-width: 960px) {
-  .table-container {
-    height: 100vh;
-  }
+
   table {
     border: 0;
     vertical-align: middle;
@@ -136,7 +134,5 @@ th.mat-header-cell{
     margin-bottom: 5px;
     margin-inline-start: 50px;
   }
-  mat-paginator {
-    margin-bottom: 15px;
-  }
+
 }

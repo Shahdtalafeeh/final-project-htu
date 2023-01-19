@@ -138,8 +138,6 @@ th.mat-header-cell{
           float: right;
           display: flex;
         }
-        mat-paginator{
-          margin-bottom: 15px;
-        }
+
 
     }
