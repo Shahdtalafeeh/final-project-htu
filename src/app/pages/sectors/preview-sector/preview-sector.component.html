@@ -1,9 +1,9 @@
 <div style="display: flex; justify-content: center" *ngIf="loading">
   <mat-spinner diameter="20" color="primary"></mat-spinner>
 </div>
-<div *ngIf="!loading">
-  <div class="background">
-    <div class="flex">
+
+
+    <div class="flex" *ngIf="!loading">
       <div class="col-1">
         <div class="name" [style.color]="designColor">{{ sectors }}</div>
         <br />
@@ -16,6 +16,6 @@
         <img [src]="sectorLogo" width="350px" height="250px" />
       </div>
     </div>
-  </div>
-</div>
+
+
 
