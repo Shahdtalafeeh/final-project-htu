@@ -43,7 +43,6 @@ export class AddStartupComponent extends AppComponentBase implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.getAllsectors();
   }
   onAddClicked() {
@@ -56,7 +55,6 @@ export class AddStartupComponent extends AppComponentBase implements OnInit {
         this.createStartup();
       }
     }
-
   }
 
   upload() {
@@ -73,27 +71,26 @@ export class AddStartupComponent extends AppComponentBase implements OnInit {
     this._uploadService.getDownloadURL().subscribe((url) => {
       console.log();
       this.formGroup.controls['logoImage'].setValue(url);
-       this.createStartup()
+      this.createStartup();
     });
   }
-  createStartup(){
+  createStartup() {
     this._startupsService
-    .create({
-      startupName: this.formGroup.controls['startupName'].value,
-      logoImage: this.formGroup.controls['logoImage'].value,
-      city: this.formGroup.controls['city'].value,
-      sectors: this.formGroup.controls['sectors'].value,
-      founderName: this.formGroup.controls['founderName'].value,
-      numberOfEmployees:
-        this.formGroup.controls['numberOfEmployees'].value,
-      yearOfEstablishment:
-        this.formGroup.controls['yearOfEstablishment'].value,
-      websiteUrl: this.formGroup.controls['websiteUrl'].value,
-      emailAddress: this.formGroup.controls['emailAddress'].value,
-    })
-    .then(() => {
-      this.back();
-    });
+      .create({
+        startupName: this.formGroup.controls['startupName'].value,
+        logoImage: this.formGroup.controls['logoImage'].value,
+        city: this.formGroup.controls['city'].value,
+        sectors: this.formGroup.controls['sectors'].value,
+        founderName: this.formGroup.controls['founderName'].value,
+        numberOfEmployees: this.formGroup.controls['numberOfEmployees'].value,
+        yearOfEstablishment:
+          this.formGroup.controls['yearOfEstablishment'].value,
+        websiteUrl: this.formGroup.controls['websiteUrl'].value,
+        emailAddress: this.formGroup.controls['emailAddress'].value,
+      })
+      .then(() => {
+        this.back();
+      });
   }
   onFileInputChange(event: any) {
     this.formGroup.controls['logoImage'].setValue(event.target.files[0]);

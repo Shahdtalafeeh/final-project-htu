@@ -1,7 +1,23 @@
-<div class="tab">
+<link
+rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"
+/>
+<div class="area">
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
   <div class="login-card">
     <form [formGroup]="formGroup">
-      <h2>Login</h2>
+      <h2>LOGIN</h2>
       <mat-form-field appearance="outline" class="field-width">
         <mat-label>Email</mat-label>
         <input
@@ -13,6 +29,8 @@
         <mat-error *ngIf="email.invalid">{{
           getEmailErrorMessage()
         }}</mat-error>
+        <span class="material-symbols-outlined"> account_circle </span>
+
       </mat-form-field>
       <mat-form-field appearance="outline" class="field-width">
         <mat-label>Password</mat-label>
@@ -25,6 +43,8 @@
         <mat-error *ngIf="password.invalid">{{
           getPasswordErrorMessage()
         }}</mat-error>
+        <span class="material-symbols-outlined"> lock </span>
+
       </mat-form-field>
       <a routerLink="/users/signup">create account</a>
       <button mat-raised-button color="primary" (click)="onloginClicked()">
@@ -36,5 +56,3 @@
     </div>
   </div>
 </div>
-
-

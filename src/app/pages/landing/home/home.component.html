@@ -10,28 +10,53 @@
     <mat-spinner diameter="50" color="primary"></mat-spinner>
   </div>
   <h1>Start Ups...</h1>
-  <div class="flex-row" *ngIf="!loading">
-    <mat-card
+  <div class="body" *ngIf="!loading">
+    <mat-tab-group >
+      <mat-tab *ngFor="let sector of sectors" >
+        <ng-template mat-tab-label
+          ><span [style.color]="sector.designColor">{{
+            sector.sectors
+          }}</span></ng-template
+        >
+       <div *ngFor="let startup of startups" class="flex-row">
+
+        <img
+
+        *ngIf="startup.sectors.indexOf(sector.sectors) !== -1"
+          (click)="onCardClicked(startup.id)"
+          [src]="startup.logoImage"
+          alt="Photo of a Shiba Inu"
+          class="img"
+        />
+       </div>
+
+      </mat-tab>
+    </mat-tab-group>
+    <!-- <mat-card
       *ngFor="let sector of sectors"
       [style.border-color]="sector.designColor"
+
     >
       <mat-card-header class="title">
         <mat-card-title [style.color]="sector.designColor">{{
           sector.sectors
         }}</mat-card-title>
       </mat-card-header>
-      <div class="flex-row">
-        <div *ngFor="let startup of startups">
-          <img
-            *ngIf="startup.sectors.indexOf(sector.sectors) !== -1"
-            (click)="onCardClicked(startup.id)"
-            [src]="startup.logoImage"
-            alt="Photo of a Shiba Inu"
-            class="img"
-          />
-        </div>
-      </div>
-    </mat-card>
+
+  <div *ngFor="let startup of startups" class="row">
+    <img
+
+      *ngIf="startup.sectors.indexOf(sector.sectors) !== -1"
+      (click)="onCardClicked(startup.id)"
+      [src]="startup.logoImage"
+      alt="Photo of a Shiba Inu"
+      class="img"
+    />
+  </div>
+
+
+
+    </mat-card> -->
   </div>
 </div>
 

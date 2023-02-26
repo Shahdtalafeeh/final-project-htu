@@ -35,7 +35,7 @@ export class EditStartupComponent  implements OnInit {
       logoImage: null,
       city: null,
       sectors: [null ,Validators.required],
-      founderName: [null, Validators.required],
+     founderName: [null, Validators.required],
       numberOfEmployees: null,
       yearOfEstablishment: null,
       websiteUrl: [null, Validators.required],
@@ -123,11 +123,12 @@ export class EditStartupComponent  implements OnInit {
         logoImage: this.formGroup.controls['logoImage'].value,
         city:this.formGroup.controls['city'].value,
         sectors: this.formGroup.controls['sectors'].value ,
-        founderName: this.formGroup.controls['founderName'].value,
+       founderName: this.formGroup.controls['founderName'].value,
         numberOfEmployees: this.formGroup.controls['numberOfEmployees'].value,
         yearOfEstablishment: this.formGroup.controls['yearOfEstablishment'].value,
         websiteUrl: this.formGroup.controls['websiteUrl'].value,
         emailAddress: this.formGroup.controls['emailAddress'].value,
+
       })
       .then(() => {
         this.location.back();
