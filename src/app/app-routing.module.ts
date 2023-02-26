@@ -2,13 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NoAuthGuard } from './core/guards/no-auth.guard';
-import { ApproveComponent } from './pages/approve/approve.component';
 import { FormComponent } from './pages/form/form.component';
-
 import { LandingComponent } from './pages/landing/landing.component';
-import { SectorsComponent } from './pages/sectors/sectors.component';
-import { StartupsComponent } from './pages/startups/startups/startups.component';
-import { AllStartupsComponent } from './shared/all-startups/all-startups.component';
 
 const routes: Routes = [
   {

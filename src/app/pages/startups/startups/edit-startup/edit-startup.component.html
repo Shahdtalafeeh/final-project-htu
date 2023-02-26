@@ -9,13 +9,16 @@
     >
       Back
     </button>
-
   </div>
-  <form [formGroup]="formGroup" >
+  <form [formGroup]="formGroup">
     <div class="form-header">
       <h2>Update Startup</h2>
 
-      <img [src]="imgSrc" alt="" *ngIf="formGroup.controls['logoImage'].value" />
+      <img
+        [src]="imgSrc"
+        alt=""
+        *ngIf="formGroup.controls['logoImage'].value"
+      />
       <label for="file" class="logo"> Logo </label>
       <input
         id="file"
@@ -23,9 +26,7 @@
         (change)="onFileInputChange($event)"
         accept="image/*"
       />
-
     </div>
-
 
     <div class="fields">
       <mat-form-field appearance="outline">
@@ -47,18 +48,26 @@
     </div>
 
     <div class="fields">
-      <div >
+      <div>
         <mat-form-field appearance="fill">
           <mat-label>Select a sector</mat-label>
           <mat-select multiple formControlName="sectors">
             <mat-select-trigger>
               {{formGroup.controls['sectors'].value?.[0] || ''}}
-              <span *ngIf="(formGroup.controls['sectors'].value?.length || 0) > 1" class="example-additional-selection">
-                (+{{(formGroup.controls['sectors'].value?.length || 0) - 1}} {{formGroup.controls['sectors'].value?.length === 2 ? 'other' : 'others'}})
+              <span
+                *ngIf="(formGroup.controls['sectors'].value?.length || 0) > 1"
+                class="example-additional-selection"
+              >
+                (+{{ (formGroup.controls["sectors"].value?.length || 0) - 1 }}
+                {{
+                  formGroup.controls["sectors"].value?.length === 2
+                    ? "other"
+                    : "others"
+                }})
               </span>
             </mat-select-trigger>
             <mat-option
-            [value]="droplist.sectors"
+              [value]="droplist.sectors"
               *ngFor="let droplist of dropList"
               >{{ droplist.sectors }}</mat-option
             >
@@ -68,7 +77,6 @@
           }}</mat-error>
         </mat-form-field>
       </div>
-
 
       <mat-form-field appearance="outline">
         <mat-label>founder Name</mat-label>
@@ -120,11 +128,10 @@
         getErrorMessage(formGroup.get("emailAddress"))
       }}</mat-error>
     </mat-form-field>
-  <div class="actions-section">
-    <button mat-flat-button color="primary" (click)="onUpdateClicked()">
-      <mat-icon>update</mat-icon>Update
-    </button>
-  </div>
+    <div class="actions-section">
+      <button mat-flat-button color="primary" (click)="onUpdateClicked()">
+        <mat-icon>update</mat-icon>Update
+      </button>
+    </div>
   </form>
 </div>
-

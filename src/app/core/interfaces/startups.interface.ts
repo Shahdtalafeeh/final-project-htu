@@ -5,7 +5,7 @@ export interface Startups{
     logoImage?:string,
     city:string,
     sectors:Sectors[],
-    founderName:string,
+    founderName?:string,
     numberOfEmployees:number,
     yearOfEstablishment:number,
     websiteUrl:string,

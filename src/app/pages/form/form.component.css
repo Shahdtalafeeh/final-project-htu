@@ -7,6 +7,9 @@ form {
   box-shadow: 0px 8px 9px 7px #8888;
   margin: auto;
 }
+mat-form-field{
+  margin-bottom: 15px;
+}
 
 .logo {
   background-color: #3f51b5;
